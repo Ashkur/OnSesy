@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEditalTable extends Migration
+class CreateEstadoCivilTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateEditalTable extends Migration
      */
     public function up()
     {
-        Schema::create('edital', function (Blueprint $table) {
+        Schema::create('estado_civil', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('entidade');
-            $table->integer('numero');
-            $table->integer('ano');
-            $table->date('data_inicio');
-            $table->date('data_fim');
+            $table->string('tipo');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateEditalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('editals');
+        Schema::dropIfExists('estado_civil');
     }
 }
