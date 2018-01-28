@@ -29,4 +29,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function cargo(){
+        return $this->hasOne('App\Cargo', 'cargo_id');
+    }
+
+    public function comunicado() {
+        return $this->belongsTo('App\Comunicado', 'comunicado_id');
+    }
+
+    public function edital() {
+        return $this->belongsTo('App\Edital', 'edital_id');
+    }
+
 }
