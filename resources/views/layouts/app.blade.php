@@ -28,23 +28,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Home</a>
           </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#empresa">Empresa</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#seletivos">Seletivos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#depoimentos">Depoimentos</a>
-        </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#contato">Contato</a>
-          </li>
+         
         </ul>
-        <form class="form-inline">
-          <input class="form-control mr-2" type="search" placeholder="Buscar...">
-          <button class="btn btn-warning" type="Submit"><b>Ok</b></button>
-        </form>
+        <!-- login e Logout -->
 
       </div>
     </div>
