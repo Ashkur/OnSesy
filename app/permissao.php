@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class permissao extends Model
+class Permissao extends Model
 {
     protected $table = "permissoes";
 

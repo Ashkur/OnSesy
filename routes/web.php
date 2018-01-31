@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//ROTAS PARA TESTE DE PERMISSAO
+Route::get('/permissao/lista', 'PapelController@index');
+
+
 //teste de cadastro do usuario
 Route::group(['prefix' => 'usuario'], function () {
     Route::get('/cadastro', 'UserController@formularioCadastro');
