@@ -54,3 +54,7 @@ Route::prefix('auxiliar')->group(function () {
     Route::get('/detalhesseletivo', 'AuxiliarController@detalharSeletivo');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

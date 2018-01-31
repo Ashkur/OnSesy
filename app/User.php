@@ -42,4 +42,8 @@ class User extends Authenticatable
         return $this->belongsTo('App\Edital', 'edital_id');
     }
 
+    public function papeis() {
+        return $this->belongsToMany('App\Papel', 'papeis_users');
+    }
+
 }
