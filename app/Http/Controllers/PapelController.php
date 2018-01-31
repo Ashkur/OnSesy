@@ -90,6 +90,6 @@ class PapelController extends Controller
     public function visualizarPermissoesPapel($papel_id){
         $papel = Papel::findOrFail($papel_id);
 
-        return view('papeis.adicionar_permissao', compact('papel'));
+        return view('papeis.visualizar_permissao', compact('papel'));
     }
 }

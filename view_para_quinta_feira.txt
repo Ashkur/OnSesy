@@ -1,0 +1,5 @@
+VIEW PERMISSÃO E PAPEIS
+
+DEVEM CONTER:
+- lista de todos os papeis e permissoes
+- opções para o crud
