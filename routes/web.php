@@ -19,6 +19,9 @@ Route::get('/', function () {
 //ROTAS PARA TESTE DE PERMISSAO
 Route::get('/permissao/lista', 'PapelController@index');
 
+//ROTAS PARA TESTE DE PAPEIS
+Route::get('/papel/permissao/{id}', 'PapelController@visualizarPermissoesPapel');
+
 
 //teste de cadastro do usuario
 Route::group(['prefix' => 'usuario'], function () {

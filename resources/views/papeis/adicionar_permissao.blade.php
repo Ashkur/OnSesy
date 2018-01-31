@@ -6,6 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             
             <table class="table table-hover">
+                <h3>LISTA DE PERMISSOES DO PAPEL {{$papel->id}}</h3>
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -16,7 +17,7 @@
                 </thead>
                 <tbody>
                     
-                    @foreach($papeis as $permissao)
+                    @foreach($papel->permissoes as $permissao)
                     <tr>
                     <th scope="row">{{$permissao->id}}</th>
                     <td>{{$permissao->nome}}</td>

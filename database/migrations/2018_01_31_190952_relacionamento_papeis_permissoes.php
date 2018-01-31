@@ -14,11 +14,11 @@ class RelacionamentoPapeisPermissoes extends Migration
     public function up()
     {
         Schema::create('papeis_permissoes', function (Blueprint $table) {
-            $table->integer('permissoes_id')->unsigned();
+            $table->integer('permissao_id')->unsigned();
             $table->integer('papel_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('permissoes_id')
+            $table->foreign('permissao_id')
                 ->references('id')->on('permissoes')
                 ->deleteOn('cascade');
 
@@ -36,8 +36,8 @@ class RelacionamentoPapeisPermissoes extends Migration
     public function down()
     {   
         Schema::table('papeis_permissoes', function (Blueprint $table) {
-            $table->dropForeign('papeis_permissoes_permissoes_id_foreign');
-            $table->dropColumn('permissoes_id');
+            $table->dropForeign('papeis_permissoes_permissao_id_foreign');
+            $table->dropColumn('permissao_id');
 
             $table->dropForeign('papeis_permissoes_papel_id_foreign');
             $table->dropColumn('papel_id');
