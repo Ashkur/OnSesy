@@ -16,12 +16,12 @@
                 </thead>
                 <tbody>
                     
-                    @foreach($papeis as $permissao)
+                    @foreach($papeis as $papel)
                     <tr>
-                    <th scope="row">{{$permissao->id}}</th>
-                    <td>{{$permissao->nome}}</td>
-                    <td>{{$permissao->descricao}}</td>
-                    <td><a link="#" class="btn btn-warning ">Editar</a>
+                    <th scope="row">{{$papel->id}}</th>
+                    <td>{{$papel->nome}}</td>
+                    <td>{{$papel->descricao}}</td>
+                    <td><a href="{{action('PapelController@edit', $papel->id)}}" class="btn btn-warning ">Editar</a>
                         <a link="#" class="btn btn-warning ">Excluir</a>
                     </td>
                     </tr>

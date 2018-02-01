@@ -17,10 +17,29 @@ Route::get('/', function () {
 
 
 //ROTAS PARA TESTE DE PERMISSAO
-Route::get('/permissao/lista', 'PapelController@index');
+Route::get('/permissao/lista', 'PermissaoController@index')->name('lista');
+
+Route::get('/permissao/adicionar', 'PermissaoController@create');
+Route::post('/permissao/adicionar', 'PermissaoController@store');
+
+Route::get('/permissao/editar/{id}', 'PermissaoController@edit');
+Route::put('/permissao/editar/{id}', 'PermissaoController@update');
+
+Route::delete('/permissao/remover/{id}', 'PermissaoController@destroy');
+
 
 //ROTAS PARA TESTE DE PAPEIS
-Route::get('/papel/permissao/{id}', 'PapelController@visualizarPermissoesPapel');
+Route::get('/papel/lista', 'PapelController@index');
+
+Route::get('/papel/adicionar', 'PapelController@create');
+Route::post('/papel/adicionar', 'PapelController@store');
+
+Route::get('/papel/editar/{id}', 'PapelController@edit');
+Route::put('/papel/editar/{id}', 'PapelController@update');
+
+Route::delete('/papel/permissoes/remover/{id}', 'PapelController@removerPermissaoPapel');
+
+Route::get('/papel/permissoes/{id}', 'PapelController@visualizarPermissoesPapel');
 
 
 //teste de cadastro do usuario

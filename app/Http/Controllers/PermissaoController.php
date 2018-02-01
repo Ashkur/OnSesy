@@ -18,7 +18,7 @@ class PermissaoController extends Controller
     {
         $permissoes = Permissao::all();
 
-        return view('permissoes.adicionapermissao', compact('permissoes'));
+        return view('permissoes.permissao_lista', compact('permissoes'));
     }
 
     /**
@@ -28,7 +28,7 @@ class PermissaoController extends Controller
      */
     public function create()
     {
-        //
+        return view('permissoes.permissao_adicionar');
     }
 
     /**
@@ -39,7 +39,12 @@ class PermissaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $permissao = new Permissao;
+        $permissao->nome = $request->nome;
+        $permissao->descricao = $request->descricao;
+        $permissao->save();
+
+        return $this->index();
     }
 
     /**
@@ -61,7 +66,8 @@ class PermissaoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $permissao = Permissao::find($id);
+        return view('permissoes.permissao_editar', compact('permissao'));
     }
 
     /**
@@ -73,7 +79,12 @@ class PermissaoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $permissao = Permissao::find($id);
+
+        $permissao->nome = $request->nome;
+        $permissao->descricao = $request->descricao;
+        if($permissao->save())
+            return "editado";
     }
 
     /**
@@ -84,6 +95,9 @@ class PermissaoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $permissao = Permissao::find($id);
+        $permissao->delete();
+
+        return $this->index();
     }
 }

@@ -6,7 +6,6 @@
         <div class="col-md-8 col-md-offset-2">
             
             <table class="table table-hover">
-                <h3>LISTA DE PERMISSOES DO {{$papel->nome}}</h3>
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -17,23 +16,26 @@
                 </thead>
                 <tbody>
                     
-                    @foreach($papel->permissoes as $permissao)
+                    @foreach($permissoes as $permissao)
                     <tr>
                     <th scope="row">{{$permissao->id}}</th>
                     <td>{{$permissao->nome}}</td>
                     <td>{{$permissao->descricao}}</td>
-                    <td><a link="#" class="btn btn-warning ">Editar</a>
-                        <form action="{{action('PapelController@removerPermissaoPapel', $permissao->id)}}" method="post">
+                    <td><a href="{{action('PermissaoController@edit', $permissao->id)}}" class="btn btn-warning ">Editar</a>
+                        <form action="{{action('PermissaoController@destroy', $permissao->id)}}" method="post">
 						{{ csrf_field() }}
                         {{ method_field('DELETE') }}
                             <div class="form-group">
-                                <input type="hidden" name="papel" value="{{$papel->id}}">
                                 <button type="submit" class="btn btn-danger">Excluir</button>
                             </div>
                         </form>
                     </td>
                     </tr>
                     @endforeach
+
+                    <div class="form-group">                            
+                        <a href="{{action('PermissaoController@create')}}" class="btn btn-sucess">Adicionar Permissao</a>
+                    </div>
                     
                 </tbody>
             </table>
