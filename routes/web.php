@@ -16,6 +16,9 @@ Route::get('/', function () {
 });
 
 
+//ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
+Route::get('/permissao/adicionar', 'PermissaoController@create');
+
 //ROTAS PARA TESTE DE PERMISSAO
 Route::get('/permissao/lista', 'PermissaoController@index')->name('lista');
 
@@ -37,6 +40,9 @@ Route::post('/papel/adicionar', 'PapelController@store');
 Route::get('/papel/editar/{id}', 'PapelController@edit');
 Route::put('/papel/editar/{id}', 'PapelController@update');
 
+Route::delete('/papel/remover/{id}', 'PapelController@destroy');
+
+Route::put('/papel/permissao/adicionar/{id}', 'PapelController@adicionarPermissaoPapel');
 Route::delete('/papel/permissoes/remover/{id}', 'PapelController@removerPermissaoPapel');
 
 Route::get('/papel/permissoes/{id}', 'PapelController@visualizarPermissoesPapel');
