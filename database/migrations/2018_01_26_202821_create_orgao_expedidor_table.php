@@ -27,6 +27,6 @@ class CreateOrgaoExpedidorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orgao_expdidor');
+        Schema::dropIfExists('orgao_expedidor');
     }
 }
