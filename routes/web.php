@@ -24,7 +24,7 @@ Route::post('/user/adicionar', 'UserController@store');
 Route::delete('/user/remover/{id}', 'UserController@destroy');
 
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
-Route::get('/permissao/adicionar', 'PermissaoController@create');
+Route::get('/permissao/adicionar', 'PermissaoController@create')->name('Adcionar Permissão');
 
 //ROTAS PARA TESTE DE PERMISSAO
 Route::get('/permissao/lista', 'PermissaoController@index')->name('lista');
