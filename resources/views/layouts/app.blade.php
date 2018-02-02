@@ -17,11 +17,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'OnSesy') }}</title>
 
-    <!-- Styles 
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    -->
+    <!-- Styles -->
+    <link href="/css/app.css" rel="stylesheet">
+    
 </head>
 <body>
     <script type="text/javascript" src="../js/jquery/dist/jquery.js"></script>

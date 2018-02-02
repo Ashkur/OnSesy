@@ -24,7 +24,7 @@
                     <td>{{$permissao->descricao}}</td>
                     <td>
                         <form action="{{action('PapelController@removerPermissaoPapel', $permissao->id)}}" method="post">
-						{{ csrf_field() }}
+                        {{ csrf_field() }}
                         {{ method_field('DELETE') }}
                             <div class="form-group">
                                 <input type="hidden" name="papel" value="{{$papel->id}}">

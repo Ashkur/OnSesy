@@ -21,19 +21,6 @@
                 <input type="text" name="descricao" class="form-control" value="{{$papel->descricao}}" >
             </div>
 
-            <div class="form-group">
-                <div class="row">
-                @foreach($permissoes as $permissao)
-                    <div class="card-body">
-                        <h5 class="card-title">{{$permissao->nome}}</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{$permissao->id}}" name="permissoes[]">
-                            </div>
-                    </div>
-                @endforeach
-                </div>
-            </div>
-
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

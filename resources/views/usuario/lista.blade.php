@@ -16,16 +16,16 @@
                 </thead>
                 <tbody>
                     
-                    @foreach($papeis as $papel)
+                    @foreach($users as $user)
                     <tr>
-                    <th scope="row">{{$papel->id}}</th>
-                    <td>{{$papel->nome}}</td>
-                    <td>{{$papel->descricao}}</td>
+                    <th scope="row">{{$user->id}}</th>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->cpf}}</td>
                     <td>
-                        <a href="{{action('PapelController@visualizarPermissoesPapel', $papel->id)}}" class="btn btn-sucess">Ver Permissoes</a>
+                        <a href="{{action('PapelController@visualizarPermissoesPapel', $user->id)}}" class="btn btn-sucess">Ver Permissoes</a>
                     </td>
-                    <td><a href="{{action('PapelController@edit', $papel->id)}}" class="btn btn-warning ">Editar</a>
-                        <form action="{{action('PapelController@destroy', $papel->id)}}" method="post">
+                    <td><a href="{{action('PapelController@edit', $user->id)}}" class="btn btn-warning ">Editar</a>
+                        <form action="{{action('PapelController@destroy', $user->id)}}" method="post">
 						{{ csrf_field() }}
                         {{ method_field('DELETE') }}
                             <div class="form-group">

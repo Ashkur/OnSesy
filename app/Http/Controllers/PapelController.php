@@ -119,7 +119,7 @@ class PapelController extends Controller
             if($permissao->id){
                 $permissao_id = $permissao->id;               
                if($this->destroyPermissaoPapel($papel_id, $permissao_id)){
-                   echo "removido";
+                   
                }else echo "nao foi possivel remove este papel";
             }
         }
@@ -139,21 +139,17 @@ class PapelController extends Controller
         foreach($request->permissoes as $permissao){
             $papel->permissoes()->attach(['id'=>$permissao]);
         }
-
-        return $this->index();
     }
 
     public function removerPermissaoPapel(Request $request, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($request->papel);
-        $permissao->papeis()->delete();
-        return $this->index();
+        //$permissao->papeis()->delete();
     }
 
     public function destroyPermissaoPapel($papel_id, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($papel_id);
-        $permissao->papeis()->delete();
         return true;
     }
 }

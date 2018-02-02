@@ -16,6 +16,10 @@ Route::get('/', function () {
 });
 
 
+//TESTE USER INDEX
+Route::get('/user/dashboard', 'UserController@index');
+Route::get('/user/lista', 'UserController@listar');
+
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
 Route::get('/permissao/adicionar', 'PermissaoController@create');
 
@@ -32,7 +36,7 @@ Route::delete('/permissao/remover/{id}', 'PermissaoController@destroy');
 
 
 //ROTAS PARA TESTE DE PAPEIS
-Route::get('/papel/lista', 'PapelController@index');
+Route::get('/papel/lista', 'PapelController@index')->name('papel_lista');
 
 Route::get('/papel/adicionar', 'PapelController@create');
 Route::post('/papel/adicionar', 'PapelController@store');
