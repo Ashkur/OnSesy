@@ -22,10 +22,10 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->cpf}}</td>
                     <td>
-                        <a href="{{action('PapelController@visualizarPermissoesPapel', $user->id)}}" class="btn btn-sucess">Ver Permissoes</a>
+                        <a href="" class="btn btn-sucess">Ver Permissoes</a>
                     </td>
-                    <td><a href="{{action('PapelController@edit', $user->id)}}" class="btn btn-warning ">Editar</a>
-                        <form action="{{action('PapelController@destroy', $user->id)}}" method="post">
+                    <td><a href="" class="btn btn-warning ">Editar</a>
+                        <form action="{{action('UserController@destroy', $user->id)}}" method="post">
 						{{ csrf_field() }}
                         {{ method_field('DELETE') }}
                             <div class="form-group">
@@ -37,7 +37,7 @@
                     @endforeach
 
                     <div class="form-group">                            
-                        <a href="{{action('PapelController@create')}}" class="btn btn-sucess">Adicionar Papel</a>
+                        <a href="{{action('UserController@create')}}" class="btn btn-sucess">Adicionar Usuario</a>
                     </div>                    
                     
                 </tbody>

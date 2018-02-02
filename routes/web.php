@@ -16,9 +16,12 @@ Route::get('/', function () {
 });
 
 
-//TESTE USER INDEX
+//TESTE USER
 Route::get('/user/dashboard', 'UserController@index');
 Route::get('/user/lista', 'UserController@listar');
+Route::get('/user/adicionar', 'UserController@create');
+Route::post('/user/adicionar', 'UserController@store');
+Route::delete('/user/remover/{id}', 'UserController@destroy');
 
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
 Route::get('/permissao/adicionar', 'PermissaoController@create')->name('Adcionar Permissão');

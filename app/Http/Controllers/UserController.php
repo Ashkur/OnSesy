@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('usuario.adicionar');
     }
 
     /**
@@ -35,8 +35,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->cpf = $request->cpf;
+        $user->password = $request->password;
+        $user->cargo_id = '1';
+        $user->save();
+        return $this->index();        
     }
 
     /**
@@ -81,7 +89,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return $this->listar();
     }
 
     public function listar(){
