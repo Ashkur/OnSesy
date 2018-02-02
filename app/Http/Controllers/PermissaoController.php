@@ -84,7 +84,7 @@ class PermissaoController extends Controller
         $permissao->nome = $request->nome;
         $permissao->descricao = $request->descricao;
         if($permissao->save())
-            return "editado";
+            return $this->index();
     }
 
     /**

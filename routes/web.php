@@ -21,7 +21,7 @@ Route::get('/user/dashboard', 'UserController@index');
 Route::get('/user/lista', 'UserController@listar');
 
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
-Route::get('/permissao/adicionar', 'PermissaoController@create');
+Route::get('/permissao/adicionar', 'PermissaoController@create')->name('Adcionar Permissão');
 
 //ROTAS PARA TESTE DE PERMISSAO
 Route::get('/permissao/lista', 'PermissaoController@index')->name('lista');
