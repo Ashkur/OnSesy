@@ -44,7 +44,7 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->cargo_id = '1';
         $user->save();
-        return $this->index();        
+        return $this->listar();        
     }
 
     /**
@@ -65,8 +65,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $user = User::find($id);
+        return view('usuario.editar', compact('user'));
     }
 
     /**
@@ -78,7 +79,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->nome;
+        $user->email = $request->email;
+        $user->cpf = $request->cpf;
+        $user->password = $request->password;
+        $user->save();
+
+        return $this->listar();
     }
 
     /**
