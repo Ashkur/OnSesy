@@ -24,14 +24,14 @@ mix.combine(['resources/assets/css/materialize.css',
               'public/css/app.css');
 
 
-/*
-mix.combine('assets/bootstrap/compiler/bootstrap.css',
-            'assets/bootstrap/compiler/style.css'
+
+mix.combine(['resources/assets/bootstrap/compiler/bootstrap.css',
+            'resources/assets/bootstrap/compiler/style.css']
 , 'public/css/style.css');
 
-mix.combine('assets/js/popper.js/dist/umd/popper.js',
-            'assets/js/bootstrap.js',
-            'assets/js/jquery/dist/jquery.js',
-            'assets/js/jquery/dist/jquery-3.1.1.min.js',
-            'assets/js/jquery/dist/app.js'
-  , 'public/js/apps.js'); */
+mix.combine(['resources/assets/js/popper.js/dist/umd/popper.js',
+            'resources/assets/js/bootstrap.js',
+            'resources/assets/js/jquery/dist/jquery.js',
+            'resources/assets/js/jquery/dist/jquery-3.1.1.min.js',
+            'resources/assets/js/jquery/dist/app.js']
+  , 'public/js/apps.js');
