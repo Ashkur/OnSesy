@@ -30,8 +30,8 @@ class RelacionamentoCandidatoOrgaoExpedidor extends Migration
     public function down()
     {
         Schema::table('candidatos', function (Blueprint $table) {
-            $table->dropForeign('candidatos_orgao_expeditor_id_foreign');
-            $table->dropColumn('orgao_expeditor_id');
+            $table->dropForeign('candidatos_orgao_expedidor_id_foreign');
+            $table->dropColumn('orgao_expedidor_id');
         });
     }
 }

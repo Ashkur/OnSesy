@@ -12,18 +12,13 @@ class PapeisTableSeeder extends Seeder
     public function run()
     {
         DB::table('papeis')->insert([
-            'nome' => 'Gerente',
-            'descricao' => 'gerente do sistema'
+            'nome' => 'Administrador',
+            'descricao' => 'administrador',
         ]);
 
         DB::table('papeis')->insert([
             'nome' => 'Auxiliar',
-            'descricao' => 'auxiliar do gerente do sistema'
-        ]);
-
-        DB::table('papeis')->insert([
-            'nome' => 'Administrador',
-            'descricao' => 'administrador geral do sistema'
+            'descricao' => 'auxiliar',
         ]);
     }
 }

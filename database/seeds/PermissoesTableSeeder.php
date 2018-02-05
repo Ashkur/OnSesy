@@ -11,19 +11,26 @@ class PermissoesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('permissoes')->insert([
-            'nome' => 'Criar Edital',
-            'descricao' => 'criar-edital'
+        DB::table('permissoes')->insert([            
+            'descricao' => 'Adicionar um Treinamento',
+            'valor' => json_encode([
+                'adicionar-treinamento' => true,
+            ]),
+        ]);
+
+        DB::table('permissoes')->insert([            
+            'descricao' => 'Atualização um Treinamento',
+            'valor' => json_encode([
+                'atualiza-treinamento' => true,
+            ]),
         ]);
 
         DB::table('permissoes')->insert([
-            'nome' => 'Editar Edital',
-            'descricao' => 'editar-edital'
+            'descricao' => 'Remoção de um Treinamento',
+            'valor' => json_encode([
+                'remove-treinamento' => true,
+            ]),
         ]);
 
-        DB::table('permissoes')->insert([
-            'nome' => 'Remover Edital',
-            'descricao' => 'remover-edital'
-        ]);
     }
 }

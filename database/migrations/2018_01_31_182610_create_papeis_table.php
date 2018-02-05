@@ -28,6 +28,6 @@ class CreatePapeisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('papels');
+        Schema::dropIfExists('papeis');
     }
 }
