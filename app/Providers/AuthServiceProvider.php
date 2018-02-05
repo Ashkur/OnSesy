@@ -24,7 +24,14 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->politicasDeAcesso();
 
         //
+    }
+
+    public function politicasDeAcesso(){
+        Gate::define('podeAcessar', function($user){
+            return $user->temAcesso($user->id);
+        });
     }
 }

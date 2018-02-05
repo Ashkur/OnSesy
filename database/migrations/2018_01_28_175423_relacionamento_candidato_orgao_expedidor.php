@@ -14,10 +14,10 @@ class RelacionamentoCandidatoOrgaoExpedidor extends Migration
     public function up()
     {
         Schema::table('candidatos', function (Blueprint $table) {
-            $table->integer('cargo_id')->unsigned();
+            $table->integer('orgao_expedidor_id')->unsigned();
             
-            $table->foreign('cargo_id')
-            ->references('id')->on('cargos')
+            $table->foreign('orgao_expedidor_id')
+            ->references('id')->on('orgao_expedidor')
             ->deleteOn('cascade');
         });
     }
@@ -30,8 +30,8 @@ class RelacionamentoCandidatoOrgaoExpedidor extends Migration
     public function down()
     {
         Schema::table('candidatos', function (Blueprint $table) {
-            $table->dropForeign('candidatos_cargo_id_foreign');
-            $table->dropColumn('cargo_id');
+            $table->dropForeign('candidatos_orgao_expedidor_id_foreign');
+            $table->dropColumn('orgao_expedidor_id');
         });
     }
 }

@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PapeisTableSeeder::class,
             PermissoesTableSeeder::class,
-            UserTableSeeder::class
+            UsersTableSeeder::class
         ]);
     }
 }

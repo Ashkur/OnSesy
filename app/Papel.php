@@ -20,4 +20,10 @@ class Papel extends Model
     public function permissoes() {
         return $this->belongsToMany('App\Permissao', 'papeis_permissoes');
     }
+
+    public function retornaPermissoes(){
+		foreach($this->permissoes as $permissao){
+			return $permissao->valor;
+		}
+	}
 }

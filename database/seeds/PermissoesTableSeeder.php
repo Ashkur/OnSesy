@@ -10,20 +10,57 @@ class PermissoesTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        DB::table('permissoes')->insert([
-            'nome' => 'Criar Edital',
-            'descricao' => 'criar-edital'
+    {   
+        //permissoes
+        DB::table('permissoes')->insert([            
+            'descricao' => 'Visualizar Permissões',
+            'valor' => json_encode([
+                'visualizar-permissao' => true,
+            ]),
+        ]);
+
+        DB::table('permissoes')->insert([            
+            'descricao' => 'Adicionar uma Permissão',
+            'valor' => json_encode([
+                'adicionar-permissao' => true,
+            ]),
         ]);
 
         DB::table('permissoes')->insert([
-            'nome' => 'Editar Edital',
-            'descricao' => 'editar-edital'
+            'descricao' => 'Remover uma Permissão',
+            'valor' => json_encode([
+                'remove-treinamento' => true,
+            ]),
+        ]);
+
+        //papel
+        DB::table('permissoes')->insert([
+            'descricao' => 'Visulizar Papeis',
+            'valor' => json_encode([
+                'visualizar-papeis' => true,
+            ]),
         ]);
 
         DB::table('permissoes')->insert([
-            'nome' => 'Remover Edital',
-            'descricao' => 'remover-edital'
+            'descricao' => 'Adicionar Papel',
+            'valor' => json_encode([
+                'adicionar-papel' => true,
+            ]),
         ]);
+
+        DB::table('permissoes')->insert([
+            'descricao' => 'Editar um Papel',
+            'valor' => json_encode([
+                'editar-papel' => true,
+            ]),
+        ]);
+
+        DB::table('permissoes')->insert([
+            'descricao' => 'Remoção de um Papel',
+            'valor' => json_encode([
+                'remove-papel' => true,
+            ]),
+        ]);
+
     }
 }

@@ -18,7 +18,7 @@ class PermissaoController extends Controller
     {
         $permissoes = Permissao::all();
 
-        return view('permissoes.permissao_lista', compact('permissoes'));
+        return view('permissoes.lista', compact('permissoes'));
     }
 
     /**
@@ -67,7 +67,7 @@ class PermissaoController extends Controller
     public function edit($id)
     {
         $permissao = Permissao::find($id);
-        return view('permissoes.permissao_editar', compact('permissao'));
+        return view('permissoes.editar', compact('permissao'));
     }
 
     /**

@@ -46,4 +46,13 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Papel', 'papeis_users');
     }
 
+    //checa se o papel deste usuario tem permissão
+    public function temAcesso($id){
+        $user = User::find($id);
+
+        foreach($user->papel as $papel){
+            return $papel->retornaPermissoes();        
+        }
+    }
+
 }

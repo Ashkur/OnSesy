@@ -15,8 +15,8 @@ class CreatePermissoesTable extends Migration
     {
         Schema::create('permissoes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome');
-            $table->string('descricao')->nullable();
+            $table->text('descricao')->nullable();
+            $table->string('valor');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreatePermissoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissaos');
+        Schema::dropIfExists('permissoes');
     }
 }
