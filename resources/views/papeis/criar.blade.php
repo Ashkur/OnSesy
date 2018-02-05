@@ -23,9 +23,10 @@
                 <div class="row">
                 @foreach($permissoes as $permissao)
                     <div class="card-body">
-                        <h5 class="card-title">{{$permissao->nome}}</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="{{$permissao->id}}" name="permissoes[]">
+                        <h5 class="card-title"></h5>
+                            <div>                                
+                                <input type="checkbox" id="{{$permissao->id}}" value="{{$permissao->id}}" name="permissoes[]"/>
+                                <label for="{{$permissao->id}}">{{$permissao->descricao}}</label>
                             </div>
                     </div>
                 @endforeach

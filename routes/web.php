@@ -39,7 +39,7 @@ Route::delete('/permissao/remover/{id}', 'PermissaoController@destroy');
 
 
 //ROTAS PARA TESTE DE PAPEIS
-Route::get('/papel/lista', 'PapelController@index')->name('papel_lista')->middleware('can:temAcesso');//teste com middleware
+Route::get('/papel/lista', 'PapelController@index')->name('papel_lista');//->middleware('can:temAcesso');//teste com middleware
 
 Route::get('/papel/adicionar', 'PapelController@create');
 Route::post('/papel/adicionar', 'PapelController@store');

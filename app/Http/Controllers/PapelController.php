@@ -19,7 +19,7 @@ class PapelController extends Controller
     {
         $papeis = Papel::all();
 
-        return view('papeis.visualiza_papel', compact('papeis'));
+        return view('papeis.lista', compact('papeis'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PapelController extends Controller
     public function create()
     {
         $permissoes = Permissao::all();
-        return view('papeis.criar_papel', compact('permissoes'));
+        return view('papeis.criar', compact('permissoes'));
     }
 
     /**
@@ -74,7 +74,7 @@ class PapelController extends Controller
     {
         $papel = Papel::find($id);
         $permissoes = Permissao::all();
-        return view('papeis.editar_papel', compact('papel', 'permissoes'));
+        return view('papeis.editar', compact('papel', 'permissoes'));
     }
 
     /**
@@ -129,8 +129,10 @@ class PapelController extends Controller
         $papel = Papel::findOrFail($papel_id);
         
         $pms = Permissao::all();
-
-        return view('papeis.visualizar_permissao', compact('papel', 'pms'));
+        $teste = $papel->permissoes;
+        //dd($pms);
+        dd(array_diff($teste, $pms));
+        return view('papeis.permissao', compact('papel', 'pms'));
     }
 
     public function adicionarPermissaoPapel(Request $request, $papel_id){
@@ -144,7 +146,6 @@ class PapelController extends Controller
     public function removerPermissaoPapel(Request $request, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($request->papel);
-        //$permissao->papeis()->delete();
     }
 
     public function destroyPermissaoPapel($papel_id, $permissao_id) {

@@ -24,7 +24,8 @@
                     <td>
                         <a href="{{action('PapelController@visualizarPermissoesPapel', $papel->id)}}" class="btn btn-sucess">Ver Permissoes</a>
                     </td>
-                    <td><a href="{{action('PapelController@edit', $papel->id)}}" class="btn btn-warning ">Editar</a>
+                    <td>
+                    <a href="{{action('PapelController@edit', $papel->id)}}" class="btn btn-warning ">Editar</a>
                         <form action="{{action('PapelController@destroy', $papel->id)}}" method="post">
 						{{ csrf_field() }}
                         {{ method_field('DELETE') }}
