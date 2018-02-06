@@ -12,7 +12,7 @@
         
 
         <!-- Styles -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         
     </head>
     <body>
