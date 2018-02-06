@@ -15,6 +15,20 @@ let mix = require('laravel-mix');
 
 */
 
+
+/* site */
+mix.combine([
+  'resources/assets/css/bootstrap.css'
+], 'public/css/style.css');
+
+/*mix.combine([
+  'resources/assets/js/jquery-3.3.1.min.js',
+  'resources/assets/js/bootstrap-min.js',
+], 'public/js/site.js');*/
+
+
+
+/* app.blade */
 mix.combine([
   'resources/assets/css/bootstrap.css',
   'resources/assets/css/main.css',
