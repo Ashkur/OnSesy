@@ -23,9 +23,9 @@
       <div class="container">
           <img src="images/bootstrap-solid.svg" alt="Sistema Online de Seletivos" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
         <a class="navbar-brand h1 mb-0" href="#" alt="Sistema Online de Seletivos">OnSeSy</a>
-          <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
         <div class="collapse navbar-collapse" id="navbarSite">
           <ul class="navbar-nav mr-auto">
