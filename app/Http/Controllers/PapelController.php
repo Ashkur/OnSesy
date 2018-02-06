@@ -125,13 +125,14 @@ class PapelController extends Controller
         }
     }
 
-    public function visualizarPermissoesPapel($papel_id){
+    public function visualizarPermissoesPapel($papel_id){        
+
         $papel = Papel::findOrFail($papel_id);
         
         $pms = Permissao::all();
-        $teste = $papel->permissoes;
-        //dd($pms);
-        dd(array_diff($teste, $pms));
+        
+        //$diff = $this->retornaDiferenca($papel, $pms);
+
         return view('papeis.permissao', compact('papel', 'pms'));
     }
 
@@ -141,16 +142,41 @@ class PapelController extends Controller
         foreach($request->permissoes as $permissao){
             $papel->permissoes()->attach(['id'=>$permissao]);
         }
+
+        return $this->index();
     }
 
     public function removerPermissaoPapel(Request $request, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($request->papel);
+        return $this->index();
     }
 
     public function destroyPermissaoPapel($papel_id, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($papel_id);
         return true;
+    }
+
+    public function retornaDiferenca($papel, $pms){
+
+        $vetPermissoesDoPapel = NULL;
+        $vetPermissoes = NULL;
+        
+        foreach($papel->permissoes as $permissoesDoPapel){
+            $vetPermissoesDoPapel[] = $permissoesDoPapel;
+        }
+
+        foreach($pms as $permissoes){
+            $vetPermissoes[] = $permissoes;
+        }
+
+/*        $collection = collect($vetPermissoes);
+
+        $collection2 = collect($vetPermissoesDoPapel);
+
+        dump($diff = $collection->diff($collection2)); */
+
+        return $diff;
     }
 }

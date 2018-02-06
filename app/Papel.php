@@ -14,11 +14,11 @@ class Papel extends Model
     ];
 
     public function users() {
-        return $this->belongsToMany('App\User', 'papeis_users');
+        return $this->belongsToMany('App\User', 'papeis_users')->withTimestamps();
     }
 
     public function permissoes() {
-        return $this->belongsToMany('App\Permissao', 'papeis_permissoes');
+        return $this->belongsToMany('App\Permissao', 'papeis_permissoes')->withTimestamps();
     }
 
     public function retornaPermissoes(){

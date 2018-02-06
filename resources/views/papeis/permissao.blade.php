@@ -31,6 +31,7 @@
                             </div>
                         </form>
                     </td>
+                    <td>{{$permissao->pivot->created_at}}</td>
                     </tr>
                     @endforeach
                                        
@@ -44,19 +45,15 @@
                         {{ method_field('PUT') }}   
 
                        @foreach($pms as $permissaonl)
-                        <div class="form-group">  
-                            <div class="card-body">                            
-                                <input type="checkbox" id="{{$permissaonl->id}}" value="{{$permissaonl->id}}" name="permissoes[]"/>
-                                <label for="{{$permissaonl->id}}">{{$permissaonl->descricao}}</label>                                
-                            </div>
+                        <div class="input-group-text">
+                            <input type="checkbox" name="permissoes[]" value="{{$permissaonl->id}}">
+                            <label>{{$permissaonl->descricao}}</label>
                         </div>
                         @endforeach
 
-                         <button type="submit" class="btn btn-danger">register</button>
-                    </form>                
-
-                
-                
+                         <button type="submit" class="btn btn-danger">Adicionar permissão</button>
+                    </form>  
+                    <a href="{{action('PapelController@index')}}">Voltar</a>                
                 </div>
             </div>
 
