@@ -17,6 +17,9 @@ let mix = require('laravel-mix');
 
 mix.combine([
   'resources/assets/css/bootstrap.css',
+  'resources/assets/css/main.css',
+  'resources/assets/css/material-dashboard.css',
+  'resources/assets/css/util.css',
 ], 'public/css/app.css');
 
 mix.combine([
