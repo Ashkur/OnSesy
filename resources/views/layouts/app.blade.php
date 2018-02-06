@@ -19,7 +19,7 @@
     <div id="app">
     <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark" >
     <div class="container">
-        <img src="../images/bootstrap-solid.svg" alt="Sistema Online de Seletivos" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
+        <img src="../images/logo.svg" alt="Sistema Online de Seletivos" width="30" height="30" class="d-inline-block align-top mr-2" alt="">
       <a class="navbar-brand h1 mb-0" href="#" alt="Sistema Online de Seletivos">OnSeSy</a>
         <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
           <span class="navbar-toggler-icon"></span>
