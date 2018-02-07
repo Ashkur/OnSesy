@@ -10,11 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/a', function (){
+
+    if (Auth::check()){
+     Auth::logout();
+     return redirect("/login");
+}
+});
+
+//TESTE COMUNICADO
+Route::get('/comunicado/criar', 'ComunicadoController@create');
+Route::post('/comunicado/criar', 'ComunicadoController@store');
 
 //TESTE USER
 Route::get('/user/dashboard', 'UserController@index');
@@ -63,7 +74,7 @@ Route::group(['prefix' => 'usuario'], function () {
     Route::post('/cadastro/escolaridade', 'UserController@cadastrarEscolaridade');
 });
 
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -13,11 +13,11 @@ class RelacionamentoComunicadoSeletivo extends Migration
      */
     public function up()
     {
-        Schema::table('comunicados', function (Blueprint $table) {
-            $table->integer('seletivo_id')->unsigned();
+        Schema::table('seletivos', function (Blueprint $table) {
+            $table->integer('comunicado_id')->unsigned();
             
-            $table->foreign('seletivo_id')
-            ->references('id')->on('seletivos')
+            $table->foreign('comunicado_id')
+            ->references('id')->on('comunicados')
             ->deleteOn('cascade');
         });
     }
@@ -29,9 +29,9 @@ class RelacionamentoComunicadoSeletivo extends Migration
      */
     public function down()
     {
-        Schema::table('comunicados', function (Blueprint $table) {
-            $table->dropForeign('comunicados_seletivo_id_foreign');
-            $table->dropColumn('seletivo_id');
+        Schema::table('seletivos', function (Blueprint $table) {
+            $table->dropForeign('seletivos_comunicado_id_foreign');
+            $table->dropColumn('comunicado_id');
         });
     }
 }
