@@ -22,10 +22,14 @@ mix.combine([
   'resources/assets/css/main.css',
 ], 'public/css/style.css');
 
-/*mix.combine([
-  'resources/assets/js/jquery-3.3.1.min.js',
-  'resources/assets/js/bootstrap-min.js',
-], 'public/js/app.js');*/
+mix.combine([
+  'resources/assets/js/jquery/dist/jquery.js',
+  'resources/assets/js/jquery/dist/app.js',
+  'resources/assets/js/jquery/dist/jquery-3.1.1.min.js',
+  'resources/assets/js/popper.js/dist/umd/popper.js',
+  'resources/assets/bootstrap/dist/js/bootstrap.js',
+  
+], 'public/js/apps.js');
 
 
 

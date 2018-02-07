@@ -17,8 +17,8 @@
     </head>
     <body>
         <!-- Script -->
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/apps.js"></script>
+       
         <!-- Nav -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-gradient-dark" >
       <div class="container">
@@ -55,7 +55,7 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a class="btn btn-warning ml-1" href="{{ route('login') }}"><b>Login</b></a>
-                        <a class="btn btn-warning ml-1" href="{{ route('register') }}"><b>Register</b></a>
+                        
                     @endauth
                 </div>
             @endif
