@@ -6,7 +6,7 @@
 		<div class="col-6 col-md-4 mx-auto">
 			<div class="card">
 				<div class="card-body">
-					<form class="form-signin" action="{{ url('/register') }}">
+					<form class="form-signin" action="{{ url('/register') }}" method="post">
 						{{ csrf_field() }}
 						<input type="text" name="name" id="inputNome" class="form-control" placeholder="Nome" required autofocus>
 						<label for="inputNome" class="sr-only">Nome</label>
@@ -22,6 +22,10 @@
 								<strong>{{ $errors->first('email') }}</strong>
 							</span>
 						@endif
+						<!--- CAMPO DE CPF FALTANTE -->
+						<input type="text" name="cpf"  id="" class="form-control" placeholder="cpf" required autofocus>
+						<label for="" class="sr-only">CPF</label>
+
 						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
 						<label for="inputPassword" class="sr-only">Senha</label>
 						@if ($errors->has('password'))

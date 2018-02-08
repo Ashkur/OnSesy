@@ -13,14 +13,14 @@
 				<div class="card-body">
 					<form class="form-signin" method="POST" action="{{ url('/login') }}">
 						{{ csrf_field() }}
-						<input type="email" id="inputEmail" value="{{ old('email') }}" class="form-control" placeholder="Email address" required autofocus>
+						<input type="email" id="inputEmail" value="{{ old('email') }}" class="form-control" name="email" placeholder="Email address" required autofocus>
 						<label for="inputEmail" class="sr-only">Email address</label>
 						@if ($errors->has('email'))
 							<span>
 								<strong>{{ $errors->first('email') }}</strong>
 							</span>
 						@endif
-						<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+						<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
 						<label for="inputPassword" class="sr-only">Password</label>
 						@if ($errors->has('password'))
 							<span>
