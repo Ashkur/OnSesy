@@ -17,15 +17,13 @@ let mix = require('laravel-mix');
 
 mix.combine([
   'resources/assets/css/bootstrap.css',
+  'resources/assets/css/style.css',
+  'resources/assets/css/ionicons.min.css'
 ], 'public/css/app.css');
-
-mix.combine([
-  'resources/assets/css/main.css',
-  'resources/assets/css/util.css',
-], 'public/css/login.css');
 
 mix.combine([
   'resources/assets/js/jquery-3.3.1.min.js',
   'resources/assets/js/bootstrap-min.js',
+  'resources/assets/js/login.js',
 ], 'public/js/app.js');
 
