@@ -22,9 +22,9 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->cpf}}</td>
                     <td>
-                        <a href="" class="btn btn-sucess">Ver Permissoes</a>
+                        <a href="{{action('UserController@papel', $user->id)}}" class="btn btn-sucess">Ver Permissoes</a>
                     </td>
-                    <td><a href="" class="btn btn-warning ">Editar</a>
+                    <td><a href="{{action('UserController@edit', $user->id)}}" class="btn btn-warning ">Editar</a>
                         <form action="{{action('UserController@destroy', $user->id)}}" method="post">
 						{{ csrf_field() }}
                         {{ method_field('DELETE') }}

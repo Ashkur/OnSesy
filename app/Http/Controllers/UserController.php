@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Papel;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('usuario.index');
+        return view('usuario.listar');
     }
 
     /**
@@ -42,7 +43,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->cpf = $request->cpf;
         $user->password = $request->password;
-        $user->cargo_id = '1';
         $user->save();
         return $this->listar();        
     }
@@ -98,12 +98,47 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->delete();
-        return $this->listar();
+        $this->temPapel($user->id);
+        //$user->delete();
+        //return $this->listar();
     }
 
     public function listar(){
         $users = User::all();
         return view('usuario.lista', compact('users'));
+    }
+
+    public function papel($id){
+        $user = User::find($id);
+        $papeisDoUsuario = $user->papeis;
+        $papeis = Papel::all();
+
+        if($papeisDoUsuario == "[]")
+            $papeisDoUsuario = NULL;
+        
+        return view('usuario.papel', compact('papeisDoUsuario', 'papeis', 'user'));
+    }
+
+    public function aplicarPapel(Request $request, $id){
+        $user = User::find($id);
+
+        $user->papeis()->attach($request->papel);
+
+        return $this->papel($id);
+    }
+
+    public function removerPapel(Request $request, $id){
+        $user = User::find($id);
+
+        $user->papeis()->detach($request->papel);
+
+        return $this->papel($id);
+    }
+
+    public function temPapel($id){
+        $user = User::find($id);
+        
+        if($user->papeis()->get() == "[]")
+            return true;
     }
 }

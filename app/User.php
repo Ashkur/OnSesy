@@ -30,20 +30,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function cargo(){
-        return $this->hasOne('App\Cargo', 'cargo_id');
-    }
-
     public function comunicado() {
-        return $this->belongsTo('App\Comunicado', 'comunicado_id');
+        return $this->belongsTo('App\Comunicado', 'comunicado_id')->withTimestamps();
     }
 
     public function edital() {
-        return $this->belongsTo('App\Edital', 'edital_id');
+        return $this->belongsTo('App\Edital', 'edital_id')->withTimestamps();
     }
 
     public function papeis() {
-        return $this->belongsToMany('App\Papel', 'papeis_users');
+        return $this->belongsToMany('App\Papel', 'papeis_users')->withTimestamps();
     }
 
     //checa se o papel deste usuario tem permissão

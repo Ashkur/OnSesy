@@ -24,15 +24,28 @@ Route::get('/a', function (){
 });
 
 //TESTE COMUNICADO
-Route::get('/comunicado/criar', 'ComunicadoController@create');
-Route::post('/comunicado/criar', 'ComunicadoController@store');
+Route::prefix('comunicado')->group(function () {
+    Route::get('criar', 'ComunicadoController@create');
+    Route::post('criar', 'ComunicadoController@store');
+});
 
-//TESTE USER
-Route::get('/user/dashboard', 'UserController@index');
-Route::get('/user/lista', 'UserController@listar');
-Route::get('/user/adicionar', 'UserController@create');
-Route::post('/user/adicionar', 'UserController@store');
-Route::delete('/user/remover/{id}', 'UserController@destroy');
+
+//ROTAS USER
+Route::prefix('user')->group(function () {
+    Route::get('dashboard', 'UserController@index');
+    Route::get('lista', 'UserController@listar');
+    Route::get('{id}/papel', 'UserController@papel');
+    Route::get('adicionar', 'UserController@create');
+    Route::post('adicionar', 'UserController@store');
+    Route::get('{id}/edit', 'UserController@edit');
+    Route::put('{id}/edit', 'UserController@update');
+    Route::delete('{id}/remover', 'UserController@destroy');
+    Route::post('{id}/aplicar/papel}', 'UserController@aplicarPapel');
+    Route::post('{id}/remover/papel}', 'UserController@removerPapel');
+});
+
+
+
 
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
 Route::get('/permissao/adicionar', 'PermissaoController@create')->name('Adcionar Permissão');

@@ -14,6 +14,6 @@ class Permissao extends Model
     ];
 
     public function papeis() {
-        return $this->belongsToMany('App\Papel', 'papeis_permissoes');
+        return $this->belongsToMany('App\Papel', 'papeis_permissoes')->withTimestamps();
     }
 }
