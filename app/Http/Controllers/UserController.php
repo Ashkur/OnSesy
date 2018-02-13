@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('usuario.listar');
+        return $this->listar();
     }
 
     /**
@@ -80,10 +80,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->name = $request->nome;
+        if($user == NULL)
+            return $this->listar();
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->cpf = $request->cpf;
-        $user->password = $request->password;
         $user->save();
 
         return $this->listar();
@@ -96,11 +97,20 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $user = User::find($id);
-        $this->temPapel($user->id);
-        //$user->delete();
-        //return $this->listar();
+    {   
+        $user = User::find($id);        
+
+        if($user == NULL)
+            return $this->listar();
+
+        $papel = $this->temPapel($user->id);
+
+        if($papel)
+            $this->detachPapel($user, $papel);
+
+        $user->delete();
+
+        return $this->listar();
     }
 
     public function listar(){
@@ -129,6 +139,9 @@ class UserController extends Controller
 
     public function removerPapel(Request $request, $id){
         $user = User::find($id);
+        
+        if($user == NULL)
+            return $this->listar();
 
         $user->papeis()->detach($request->papel);
 
@@ -138,7 +151,16 @@ class UserController extends Controller
     public function temPapel($id){
         $user = User::find($id);
         
-        if($user->papeis()->get() == "[]")
-            return true;
+        if($user->papeis()->get() != "[]"){
+            $papel = $user->papeis()->get();
+            foreach($papel as $papelId){
+                return $papelId->id;
+            }
+        } else return false;
+    }
+
+    public function detachPapel($user, $papel){
+        $user->papeis()->detach($papel);
+        return true;
     }
 }

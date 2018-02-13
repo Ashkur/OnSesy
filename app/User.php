@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     public function comunicado() {
-        return $this->belongsTo('App\Comunicado', 'comunicado_id')->withTimestamps();
+        return $this->hasMany('App\Comunicado', 'comunicado_id')->withTimestamps();
     }
 
     public function edital() {
