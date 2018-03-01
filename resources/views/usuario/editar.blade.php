@@ -1,32 +1,37 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="container">
-    <form class="col s12"  action="{{action('UserController@update', $user->id)}}" method="POST">
-    {{ csrf_field() }}
-    {{ method_field('PUT') }}
-    <div class="row">
-        <div class="input-field col s6 inline">
-          <input  name="name" type="text" class="validate" value="{{$user->name}}">
-          <label for="first_name">First Name</label>
-        </div>
-    </div>    
+  <div class="container" style="max-width: 720px">
 
-    <div class="row">
-        <div class="input-field col s12">
-          <input name="email" type="email" class="validate" value="{{$user->email}}">
-          <label for="email">Email</label>
-        </div>
-    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Editar dados do Usuário: {{$user->name}}</h3>
+      </div>
+      <div class="panel-body">
+        <form>
+          {{ csrf_field() }}
+          {{ method_field('PUT') }}
 
-    <div class="row">
-        <div class="input-field col s6">
-          <input  name="cpf" id="first_name" type="text" class="validate" value="{{$user->cpf}}">
-          <label for="first_name">CPF</label>
-        </div>
+          <div class="form-group">
+            <label for="name">Nome Completo</label>
+            <input  name="name" type="text" class="form-control validate" value="{{$user->name}}">            
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input name="email" type="email" class="validate form-control" value="{{$user->email}}">            
+          </div>
+
+          <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input  name="cpf" id="first_name" type="text" class="validate form-control" value="{{$user->cpf}}">            
+          </div>
+
+          <button class="btn btn-warning">Salvar</button>
+          <a href="{{action('UserController@listar')}}" class="btn btn-info float-right">voltar</a>
+        </form>
+      </div>
     </div>
-    <button class="btn btn-warning">button</button>
-    </form>
-    <a href="{{action('UserController@listar')}}" class="btn btn-info">voltar</a>
+    
   </div>
 @endsection
