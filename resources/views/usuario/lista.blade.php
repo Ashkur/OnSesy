@@ -1,29 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
+
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            
-            <table class="table table-hover">
+        <a href="{{action('UserController@create')}}" class="btn btn-success">Adicionar Usuario</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table text-center">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">nome</th>
-                    <th scope="col">descricao</th>
-                    <th scope="col">Ações</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Papel</th>
+                        <th scope="col">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     
                     @foreach($users as $user)
                     <tr>
-                    <th scope="row">{{$user->id}}</th>
                     <td>{{$user->name}}</td>
                     <td>{{$user->cpf}}</td>
-                    <td>
-                        <a href="{{action('UserController@papel', $user->id)}}" class="btn btn-sucess">Ver Permissoes</a>
-                    </td>
+                    @if($user->papeis == '[]')
+                        <td>Este usuário não contém papel. </td>
+                    @else
+                        <td>
+                            @foreach($user->papeis as $papelUsuario)
+                            {{$papelUsuario->nome}} <br>
+                            <a href="{{action('UserController@papel', $user->id)}}" class="btn btn-sucess">Detalhes</a>
+                            @endforeach
+                        </td>                    
+                    @endif
+                    
                     <td><a href="{{action('UserController@edit', $user->id)}}" class="btn btn-warning ">Editar</a>
                         <form action="{{action('UserController@destroy', $user->id)}}" method="post">
 						{{ csrf_field() }}
@@ -35,14 +45,8 @@
                     </td>
                     </tr>
                     @endforeach
-
-                    <div class="form-group">                            
-                        <a href="{{action('UserController@create')}}" class="btn btn-sucess">Adicionar Usuario</a>
-                    </div>                    
-                    
                 </tbody>
-            </table>
-        </div>
+        </table>
     </div>
 </div>
 @endsection

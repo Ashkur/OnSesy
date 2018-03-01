@@ -114,7 +114,9 @@ class UserController extends Controller
     }
 
     public function listar(){
+        
         $users = User::all();
+
         return view('usuario.lista', compact('users'));
     }
 
