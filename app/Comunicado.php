@@ -13,7 +13,7 @@ class Comunicado extends Model
     ];
 
     public function user() {
-        return $this->hasOne('App\User', 'user_id')->withTimestamps();
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function seletivo() {

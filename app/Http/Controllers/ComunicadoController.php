@@ -15,7 +15,8 @@ class ComunicadoController extends Controller
      */
     public function index()
     {
-        return $comunicados = Comunicado::all();
+        $comunicados = Comunicado::all();
+        return view('comunicado.lista', compact('comunicados'));
     }
 
     /**
@@ -65,7 +66,9 @@ class ComunicadoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comunicado = Comunicado::find($id);
+
+        return view('comunicado.editar', compact('comunicado'));
     }
 
     /**
@@ -77,7 +80,14 @@ class ComunicadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comunicado = Comunicado::find($id);
+
+        $comunicado->titulo = $request->titulo;
+        $comunicado->descricao = $request->descricao;
+        $comunicado->data_publicacao = $request->data_publicacao;
+        $comunicado->save();
+
+        return $this->index();        
     }
 
     /**
@@ -88,6 +98,9 @@ class ComunicadoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comunicado = Comunicado::find($id);
+        $comunicado->delete();
+        
+        return $this->index();
     }
 }

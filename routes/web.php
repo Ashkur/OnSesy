@@ -25,8 +25,13 @@ Route::get('/a', function (){
 
 //TESTE COMUNICADO
 Route::prefix('comunicado')->group(function () {
+    Route::get('lista', 'ComunicadoController@index');
     Route::get('criar', 'ComunicadoController@create');
     Route::post('criar', 'ComunicadoController@store');
+    Route::get('{id}/editar', 'ComunicadoController@edit');
+    Route::put('{id}/editar', 'ComunicadoController@update');
+    Route::delete('{id}/remover', 'ComunicadoController@destroy');
+
 });
 
 
@@ -43,8 +48,6 @@ Route::prefix('user')->group(function () {
     Route::post('{id}/aplicar/papel}', 'UserController@aplicarPapel');
     Route::post('{id}/remover/papel}', 'UserController@removerPapel');
 });
-
-
 
 
 //ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
@@ -88,37 +91,5 @@ Route::group(['prefix' => 'usuario'], function () {
 });
 
 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::group(['prefix' => 'administrador'], function () {
-    Route::get('/home', 'AdministradorController@index');
-    Route::get('/criarusuario', 'AdministradorController@criarUsuario');
-    Route::get('/criarpermissoes', 'AdministradorController@criarPermissoes');
-    Route::get('/definirpermissoesdousuario', 'AdministradorController@definirPermissoesDoUsuario');
-    Route::get('/listapapel', 'AdministradorController@listaPapel');
-});
-
-Route::prefix('gerente')->group(function () {
-    Route::get('/home', 'GerenteController@index');
-    Route::get('/listadeseletivos', 'GerenteController@listarSeletivos');
-    Route::get('/listaderelatorios', 'GerenteController@listarRelatorios');
-    Route::get('/detalhesseletivo', 'GerenteController@detalharSeletivo');
-    Route::get('/criarseletivo', 'GerenteController@criarSeletivo');
-    Route::post('/criarseletivo', 'GerenteController@salvarSeletivo');
-    Route::get('/editarseletivo', 'GerenteController@editarSeletivo');
-    Route::get('/definirpermissao', 'GerenteController@definirPermissaoParaUsuarios');
-});
-
-Route::prefix('auxiliar')->group(function () {
-    Route::get('/home', 'AuxiliarController@index');
-    Route::get('/listadeseletivos', 'AuxiliarController@listarSeletivos');
-    Route::get('/listaderelatorios', 'AuxiliarController@listarRelatorios');
-    Route::get('/detalhesseletivo', 'AuxiliarController@detalharSeletivo');
-});
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
