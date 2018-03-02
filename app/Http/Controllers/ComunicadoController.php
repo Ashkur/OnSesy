@@ -103,7 +103,11 @@ class ComunicadoController extends Controller
     public function destroy($id)
     {
         $comunicado = Comunicado::find($id);
-        $comunicado->delete();
+
+        if(isset($comunicado)){
+            $comunicado->delete();
+            return $this->index();
+        }
         
         return $this->index();
     }

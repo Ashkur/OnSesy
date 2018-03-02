@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            
-            <table class="table table-hover">
+    <p class="m-2">
+        <a href="{{action('ComunicadoController@create')}}" class="btn btn-success">Adicionar Comunicado</a>
+    </p>
+
+    <div class="table-responsive">            
+            <table class="table table-hover text-center">
                 <thead>
                     <tr>
                     <th scope="col">Autor</th>
@@ -41,7 +43,7 @@
                     
                 </tbody>
             </table>
-        </div>
+
     </div>
 </div>
 @endsection

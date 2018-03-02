@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+        <p>
+            <h4>Editar Comunicado <strong>{{$comunicado->titulo}}</strong></h4>
+        </p>
         <form action="{{action('ComunicadoController@update', $comunicado->id)}}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
@@ -19,8 +22,8 @@
                 <label>Data Publicação</label>
                 <input type="date" class="form-control" placeholder="Data Publicação" name="data_publicacao" value="{{$comunicado->data_publicacao}}">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Salvar</button>
         </form>
-        <a href="{{action('ComunicadoController@index')}}" class="btn btn-info">Voltar</a>
+        <a href="{{action('ComunicadoController@index')}}" class="btn btn-info float-right">Voltar</a>
 </div>
 @endsection
