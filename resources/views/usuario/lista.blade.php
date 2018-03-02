@@ -24,7 +24,11 @@
                     <td>{{$user->name}}</td>
                     <td>{{$user->cpf}}</td>
                     @if($user->papeis == '[]')
-                        <td>Este usuário não contém papel. </td>
+                        <td>
+                            Este usuário não contém papel <br>
+                        <em><a href="{{action('UserController@papel', $user->id)}}">Clique aqui para adicionar um papel</a></em>
+
+                        </td>
                     @else
                         <td>
                             @foreach($user->papeis as $papelUsuario)

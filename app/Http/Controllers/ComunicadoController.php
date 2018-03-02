@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 use App\Comunicado;
+use App\User;
 
 class ComunicadoController extends Controller
 {
@@ -37,13 +39,15 @@ class ComunicadoController extends Controller
      */
     public function store(Request $request)
     { 
+        $user = User::find(Auth::id());
+
         $comunicado = new Comunicado;
-        $comunicado->user_id = 2;
         $comunicado->titulo = $request->titulo;
         $comunicado->data_publicacao = $request->data_publicacao;
         $comunicado->descricao = $request->descricao;
-        $comunicado->save();
 
+        $user->comunicado()->save($comunicado);
+        
         return $this->index();
     }
 
