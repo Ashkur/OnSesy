@@ -9,6 +9,8 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <!-- Script Jquery e Mascaras-->
+        <script src="{{ asset('js/funcoes.js') }}"></script>
     </head>
     <body>
       @include('layouts._nave')
@@ -19,6 +21,6 @@
         @include('layouts._footer')
       </section>
       <!-- Script -->
-      <script type="text/javascript" src="js/app.js"></script>
+      <script src="{{ asset('js/app.js') }}"></script>
     </body>
 </html>

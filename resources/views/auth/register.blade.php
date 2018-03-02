@@ -23,8 +23,8 @@
 							</span>
 						@endif
 						<!--- CAMPO DE CPF FALTANTE -->
-						<input type="text" name="cpf"  id="" class="form-control" placeholder="cpf" required autofocus>
-						<label for="" class="sr-only">CPF</label>
+						<input type="text" name="cpf"  id="cpf" class="form-control" placeholder="cpf" required autofocus>
+						<label for="cpf" class="sr-only">CPF</label>
 
 						<input type="password" name="password" id="inputPassword" class="form-control" placeholder="Senha" required>
 						<label for="inputPassword" class="sr-only">Senha</label>
@@ -48,4 +48,10 @@
 		</div>
 	</div>
 </div> <!-- /container -->
+<script type="text/javascript">
+	$("#cpf").inputmask({
+		mask: ['999.999.999-99'],
+		keepStatic: true
+	});
+</script>
 @endsection

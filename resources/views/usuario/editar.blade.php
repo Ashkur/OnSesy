@@ -24,7 +24,7 @@
 
           <div class="form-group">
             <label for="cpf">CPF</label>
-            <input  name="cpf" id="first_name" type="text" class="validate form-control" value="{{$user->cpf}}">            
+            <input  name="cpf" id="cpf" type="text" class="validate form-control" value="{{$user->cpf}}">            
           </div>
 
           <button class="btn btn-warning">Salvar</button>
@@ -34,4 +34,10 @@
     </div>
     
   </div>
+  <script type="text/javascript">
+		$("#cpf").inputmask({
+		    mask: ['999.999.999-99'],
+		    keepStatic: true
+		});
+	</script>
 @endsection

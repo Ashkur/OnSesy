@@ -22,8 +22,12 @@ mix.combine([
 ], 'public/css/app.css');
 
 mix.combine([
-  'resources/assets/js/jquery-3.3.1.min.js',
   'resources/assets/js/bootstrap-min.js',
   'resources/assets/js/login.js',
 ], 'public/js/app.js');
+
+mix.combine([
+  'resources/assets/js/jquery-3.3.1.min.js',
+  'resources/assets/js/jquery.inputmask.js',
+], 'public/js/funcoes.js');
 
