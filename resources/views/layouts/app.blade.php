@@ -13,7 +13,11 @@
         <script src="{{ asset('js/funcoes.js') }}"></script>
     </head>
     <body>
-      @include('layouts._nave')
+      @if(Auth::guest())
+        @include('layouts._nave')
+      @else
+        @include('layouts.navUser')
+      @endif
       <main>
         @yield('content')
       </main>

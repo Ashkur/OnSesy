@@ -33,11 +33,12 @@
         </table>
     @endisset
     @empty($papeisDoUsuario)
-        <h4>Este usuário ainda não tem nenhum papel, você pode adicionar um de acordo com a lista abaixo:</h4>
+        <p>
+            <h4>Este usuário ainda não tem nenhum papel, você pode adicionar um de acordo com a lista abaixo:</h4>
+        </p>
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Papel</th>
                 <th scope="col">Descricao</th>
                 <th scope="col">Aplicar</th>
@@ -46,7 +47,6 @@
             <tbody>
             @foreach($papeis as $papel)
                 <tr>
-                <th scope="row">1</th>
                 <td>{{$papel->nome}}</td>
                 <td>{{$papel->descricao}}</td>
                 <td>

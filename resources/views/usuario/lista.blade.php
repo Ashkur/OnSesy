@@ -4,13 +4,13 @@
 
 <div class="container">
 
-    <div class="row">
+    <p class="m-2">
         <a href="{{action('UserController@create')}}" class="btn btn-success">Adicionar Usuario</a>
-    </div>
+    </p>
     <div class="table-responsive">
         <table class="table text-center">
                 <thead>
-                    <tr>
+                    <tr >
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Papel</th>

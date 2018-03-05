@@ -129,10 +129,11 @@ class PapelController extends Controller
         $papel = Papel::findOrFail($papel_id);
         
         $pms = Permissao::all();
-        $teste = $papel->permissoes;
-        //dd($pms);
-        dd(array_diff($teste, $pms));
-        return view('papeis.permissao', compact('papel', 'pms'));
+        $permissoes = $papel->permissoes;
+
+        $diff = $pms->diff($permissoes);
+
+        return view('papeis.permissao', compact('papel', 'diff'));
     }
 
     public function adicionarPermissaoPapel(Request $request, $papel_id){
@@ -141,11 +142,14 @@ class PapelController extends Controller
         foreach($request->permissoes as $permissao){
             $papel->permissoes()->attach(['id'=>$permissao]);
         }
+
+        return $this->visualizarPermissoesPapel($papel_id);
     }
 
     public function removerPermissaoPapel(Request $request, $permissao_id) {
         $permissao = Permissao::find($permissao_id);
         $permissao->papeis()->detach($request->papel);
+        return $this->index();
     }
 
     public function destroyPermissaoPapel($papel_id, $permissao_id) {
