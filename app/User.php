@@ -35,7 +35,7 @@ class User extends Authenticatable
     }
 
     public function edital() {
-        return $this->belongsTo('App\Edital', 'edital_id')->withTimestamps();
+        return $this->hasMany('App\Edital');
     }
 
     public function papeis() {

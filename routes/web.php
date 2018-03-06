@@ -22,8 +22,15 @@ Route::get('/a', function (){
      return redirect("/login");
 }
 });
+//ROTAS EDITAL
+Route::prefix('edital')->group(function () {
+    Route::get('lista', 'EditalController@index');
 
-//TESTE COMUNICADO
+    Route::get('criar', 'EditalController@create');
+    Route::post('lista', 'EditalController@store');
+});
+
+//ROTAS COMUNICADO
 Route::prefix('comunicado')->group(function () {
     Route::get('lista', 'ComunicadoController@index');
     Route::get('criar', 'ComunicadoController@create');

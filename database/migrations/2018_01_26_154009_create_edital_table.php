@@ -16,7 +16,7 @@ class CreateEditalTable extends Migration
         Schema::create('edital', function (Blueprint $table) {
             $table->increments('id');
             $table->string('entidade');
-            $table->integer('numero')->unique();
+            $table->string('numero')->unique();
             $table->integer('ano');
             $table->date('data_inicio');
             $table->date('data_fim');

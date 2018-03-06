@@ -15,6 +15,9 @@
                     <a class="nav-link" href="{{action('UserController@index')}}">Usuários</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{action('EditalController@index')}}">Editais</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{action('UserController@index')}}">Seletivos</a>
                 </li>
                 <li class="nav-item">
