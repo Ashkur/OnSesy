@@ -5,7 +5,7 @@
 <div class="container">
 
     <p class="m-2">
-        <a href="{{action('UserController@create')}}" class="btn btn-success">Adicionar Usuario</a>
+        <a href="{{action('UserController@create')}}" class="btn btn-success">Adicionar Usuário</a>
     </p>
     <div class="table-responsive">
         <table class="table text-center">

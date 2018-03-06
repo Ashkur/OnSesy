@@ -66,21 +66,22 @@ Route::delete('/permissao/remover/{id}', 'PermissaoController@destroy');
 
 
 //ROTAS PARA TESTE DE PAPEIS
-Route::get('/papel/lista', 'PapelController@index')->name('papel_lista');//->middleware('can:temAcesso');//teste com middleware
+Route::prefix('papel')->group(function () {
+    Route::get('lista', 'PapelController@index')->name('papel_lista');//->middleware('can:temAcesso');//teste com middleware
 
-Route::get('/papel/adicionar', 'PapelController@create');
-Route::post('/papel/adicionar', 'PapelController@store');
+    Route::get('adicionar', 'PapelController@create');
+    Route::post('adicionar', 'PapelController@store');
 
-Route::get('/papel/editar/{id}', 'PapelController@edit');
-Route::put('/papel/editar/{id}', 'PapelController@update');
+    Route::get('editar/{id}', 'PapelController@edit');
+    Route::put('editar/{id}', 'PapelController@update');
 
-Route::delete('/papel/remover/{id}', 'PapelController@destroy');
+    Route::delete('remover/{id}', 'PapelController@destroy');
 
-Route::put('/papel/permissao/adicionar/{id}', 'PapelController@adicionarPermissaoPapel');
-Route::delete('/papel/permissoes/remover/{id}', 'PapelController@removerPermissaoPapel');
+    Route::put('permissao/adicionar/{id}', 'PapelController@adicionarPermissaoPapel');
+    Route::delete('permissoes/remover/{id}', 'PapelController@removerPermissaoPapel');
 
-Route::get('/papel/permissoes/{id}', 'PapelController@visualizarPermissoesPapel');
-
+    Route::get('permissoes/{id}', 'PapelController@visualizarPermissoesPapel');
+});
 
 //teste de cadastro do usuario
 Route::group(['prefix' => 'usuario'], function () {
