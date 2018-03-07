@@ -23,18 +23,20 @@
                     <td>{{$edital->entidade}}</td>
                     <td>{{$edital->numero}}</td>
                     <td>{{$edital->ano}}</td>
-                    <td>{{$edital->data_inicio}}</td>
-                    <td>{{$edital->data_fim}}</td>
+                    <td>{{\Carbon\Carbon::parse($edital->data_inicio)->format('d/m/Y')}}</td>
+                    <td>{{\Carbon\Carbon::parse($edital->data_fim)->format('d/m/Y')}}</td>
+                    <td><a href="{{action('EditalController@edit', $edital->id)}}">Editar</a></td>
+                    <td>
+                        <form action="{{action('EditalController@destroy', $edital->id)}}" method="post">
+						    {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger">Excluir</button>
+                            </div>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
-            
-            <tr>
-                <td>Sesc/RR</td>
-                <td>008</td>
-                <td>2018</td>
-                <td>02/04/2018</td>
-                <td>02/06/2018</td>
-            </tr>
         </table>
     </div>
 </div>

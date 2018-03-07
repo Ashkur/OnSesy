@@ -72,7 +72,9 @@ class EditalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edital = Edital::find($id);
+
+        return view('edital.editar', compact('edital'));
     }
 
     /**
@@ -84,7 +86,15 @@ class EditalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $edital = Edital::find($id);
+        $edital->entidade = $request->entidade;
+        $edital->numero = $request->numero;
+        $edital->ano = $request->ano;
+        $edital->data_inicio = $request->data_inicio;
+        $edital->data_fim = $request->data_fim;
+        $edital->save();
+
+        return $this->index();
     }
 
     /**
@@ -95,6 +105,10 @@ class EditalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $edital = Edital::find($id);
+        if(isset($edital))
+            $edital->delete();
+
+        return $this->index();
     }
 }

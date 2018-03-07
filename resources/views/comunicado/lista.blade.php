@@ -25,9 +25,9 @@
                     <td>{{$comunicado->user->name}}</td>
                     <td>{{$comunicado->titulo}}</td>
                     <td>{{$comunicado->descricao}}</td>
-                    <td>{{$comunicado->data_publicacao}}</td>
-                    <td>{{$comunicado->created_at}}</td>
-                    <td>{{$comunicado->updated_at}}</td>
+                    <td>{{\Carbon\Carbon::parse($comunicado->data_publicacao)->format('d/m/Y')}}</td>
+                    <td>{{\Carbon\Carbon::parse($comunicado->created_at)->format('d/m/Y')}} às {{\Carbon\Carbon::parse($comunicado->created_at)->format('H:m')}}hrs</td>
+                    <td>{{\Carbon\Carbon::parse($comunicado->update_at)->format('d/m/Y')}} às {{\Carbon\Carbon::parse($comunicado->update_at)->format('H:m')}}hrs</td>
                     <td>
                     <a href="{{action('ComunicadoController@edit', $comunicado->id)}}" class="btn btn-warning ">Editar</a>
                         <form action="{{action('ComunicadoController@destroy', $comunicado->id)}}" method="post">
