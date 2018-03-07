@@ -1,41 +1,59 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="row">
-    <form class="col s12"  action="{{action('UserController@create')}}" method="POST">
-    {{ csrf_field() }}
+<div class="container">
     <div class="row">
-        <div class="input-field col s6 inline">
-          <input  name="name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-    </div>    
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formRegister"></span>
 
-    <div class="row">
-        <div class="input-field col s12">
-          <input name="email" type="email" class="validate">
-          <label for="email">Email</label>
+        <!-- form card register -->
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">ADICIONAR</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="f  orm" autocomplete="off" action="{{action('UserController@create')}}" method="POST">
+                    {{ csrf_field() }}
+
+                    <fieldset class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control validate" id="name" name="name" required="">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control validate" id="email" name="email" required="">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" class="form-control validate" id="cpf" name="cpf" required="">
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" class="form-control validate" id="senha" name="password" required="">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="senha">Confirmar</label>
+                        <input type="password" class="form-control validate" id="confirmar" name="password_confirmation" required="">
+                    </fieldset>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-lg float-right">Enviar</button>
+                    </div>
+                </form>
+            </div>
         </div>
+        <!-- /form card register -->
+
     </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-          <input  name="cpf" id="first_name" type="text" class="validate">
-          <label for="first_name">CPF</label>
-        </div>
     </div>
-
-    <div class="row">
-        <div class="input-field col s6">
-          <input  name="password" type="text" class="validate">
-          <label for="first_name">SENHA:</label>
-        </div>
-    </div>
-
-    <button class="waves-effect waves-light btn">button</button> 
-
-
-
-    </form>
-  </div>
+</div>
+<script type="text/javascript">
+	$("#cpf").inputmask({
+		mask: ['999.999.999-99'],
+		keepStatic: true
+	});
+</script>
 @endsection
