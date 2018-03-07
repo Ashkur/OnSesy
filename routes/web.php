@@ -28,6 +28,11 @@ Route::prefix('edital')->group(function () {
 
     Route::get('criar', 'EditalController@create');
     Route::post('lista', 'EditalController@store');
+
+    Route::get('{id}/editar', 'EditalController@edit');
+    Route::put('{id}/editar', 'EditalController@update');
+
+    Route::delete('{id}/excluir', 'EditalController@destroy');
 });
 
 //ROTAS COMUNICADO
