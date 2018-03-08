@@ -27,31 +27,31 @@
                     <a class="nav-link" href="{{action('PapelController@index')}}">Papéis Administrativos</a>
                 </li>
               </ul>
+
               @if (Auth::guest())
                 <a class="btn btn-warning ml-1" href="{{ route('login') }}"><b>Login</b></a>
                 <a class="btn btn-warning ml-1" href="{{ route('register') }}"><b>Cadastro</b></a>
               @else
-              <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
 
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        {{ Auth::user()->name }}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url('/logout') }}"
+                        class="nav-link"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                        Sair
+                    </a>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
               @endif
         </div>
     </div>
