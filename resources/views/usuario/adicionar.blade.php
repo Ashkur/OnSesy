@@ -14,29 +14,37 @@
             <div class="card-body">
                 <form class="form" role="f  orm" autocomplete="off" action="{{action('UserController@create')}}" method="POST">
                     {{ csrf_field() }}
-
+                    @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <fieldset class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" class="form-control validate" id="name" name="name" required="">
+                        <input type="text" class="form-control validate" id="name" name="name">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label for="email">E-mail</label>
-                        <input type="email" class="form-control validate" id="email" name="email" required="">
+                        <input type="email" class="form-control validate" id="email" name="email">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label for="cpf">CPF</label>
-                        <input type="text" class="form-control validate" id="cpf" name="cpf" required="">
+                        <input type="text" class="form-control validate" id="cpf" name="cpf">
                     </fieldset>
 
                     <fieldset class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" class="form-control validate" id="senha" name="password" required="">
+                        <input type="password" class="form-control validate" id="senha" name="password">
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="senha">Confirmar</label>
-                        <input type="password" class="form-control validate" id="confirmar" name="password_confirmation" required="">
+                        <input type="password" class="form-control validate" id="confirmar" name="password_confirmation">
                     </fieldset>
 
                     <div class="form-group">
