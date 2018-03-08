@@ -25,6 +25,7 @@
                     <td>{{$edital->ano}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_inicio)->format('d/m/Y')}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_fim)->format('d/m/Y')}}</td>
+                    <td><a href="{{action('CargoController@index')}}">Detalhes</a></td>
                     <td><a href="{{action('EditalController@edit', $edital->id)}}">Editar</a></td>
                     <td>
                         <form action="{{action('EditalController@destroy', $edital->id)}}" method="post">
