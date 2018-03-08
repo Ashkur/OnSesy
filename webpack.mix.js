@@ -22,7 +22,7 @@ mix.combine([
 ], 'public/css/app.css');
 
 mix.combine([
-  'resources/assets/js/bootstrap-min.js',
+  'resources/assets/js/bootstrap.js',
   'resources/assets/js/login.js',
 ], 'public/js/app.js');
 

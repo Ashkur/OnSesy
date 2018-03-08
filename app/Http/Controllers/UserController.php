@@ -42,8 +42,9 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->cpf = $request->cpf;
-        $user->password = $request->password;
-        $user->save();
+        $user->password = bcrypt($request->password);
+        $user->save(); 
+
         return $this->listar();        
     }
 
