@@ -21,6 +21,6 @@ class CargoEdital extends Model
     }
 
     public function edital(){
-        return $this->hasOne('App\Edital', 'edital_id');
+        return $this->belongsTo('App\Edital', 'edital_id');
     }
 }

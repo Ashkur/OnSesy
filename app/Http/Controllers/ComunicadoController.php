@@ -26,9 +26,10 @@ class ComunicadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('comunicado.criar');
+        $edital = Edital::find($id);
+        return view('comunicado.criar', compact('edital'));
     }
 
     /**

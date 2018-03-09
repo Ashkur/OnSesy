@@ -26,6 +26,9 @@ Route::get('/a', function (){
 //ROTAS CARGO
 Route::prefix('cargo')->group(function () {
     Route::get('lista', 'CargoController@index');
+    Route::get('{id}/adicionar', 'CargoController@create');
+    Route::post('{id}/adicionar', 'CargoController@store');
+    Route::get('{id}', 'CargoController@show');
 });
 
 //ROTAS EDITAL
@@ -44,7 +47,7 @@ Route::prefix('edital')->group(function () {
 //ROTAS COMUNICADO
 Route::prefix('comunicado')->group(function () {
     Route::get('lista', 'ComunicadoController@index');
-    Route::get('criar', 'ComunicadoController@create');
+    Route::get('{id}/criar', 'ComunicadoController@create');
     Route::post('criar', 'ComunicadoController@store');
     Route::get('{id}/editar', 'ComunicadoController@edit');
     Route::put('{id}/editar', 'ComunicadoController@update');

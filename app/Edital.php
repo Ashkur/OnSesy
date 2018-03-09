@@ -20,7 +20,11 @@ class Edital extends Model
         return $this->belongsTo('App\User', 'user_id');
     }
 
-    public function seletivo() {
-        return $this->belongsTo('App\Seletivo', 'seletivo_id');
+    public function cargo(){
+        return $this->hasMany('App\CargoEdital');
+    }
+
+    public function comunicado(){
+        return $this->hasMany('App\Comunicado');
     }
 }

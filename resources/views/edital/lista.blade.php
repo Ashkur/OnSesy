@@ -16,6 +16,10 @@
                 <th>Ano</th>
                 <th>Data de Início</th>
                 <th>Data Fim</th>
+                <th>Cargo</th>
+                <th>Comunicado</th>
+                <th>Editar</th>
+                <th>Excluir</th>
             </tr>
 
             @foreach($editais as $edital)
@@ -25,7 +29,14 @@
                     <td>{{$edital->ano}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_inicio)->format('d/m/Y')}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_fim)->format('d/m/Y')}}</td>
-                    <td><a href="{{action('CargoController@index')}}">Detalhes</a></td>
+                    @if($edital->cargo != "[]")
+                        @foreach($edital->cargo as $cargo)
+                        <td><a href="{{action('CargoController@show', $cargo->id)}}">Detalhes</a></td>
+                        @endforeach
+                    @else
+                        <td><a href="{{action('CargoController@create', $edital->id)}}">Adicionar um Cargo</a></td>
+                    @endif
+                    <td>Comunicado</td>
                     <td><a href="{{action('EditalController@edit', $edital->id)}}">Editar</a></td>
                     <td>
                         <form action="{{action('EditalController@destroy', $edital->id)}}" method="post">

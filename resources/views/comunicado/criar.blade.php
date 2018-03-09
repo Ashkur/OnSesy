@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="max-width: 720px">
     <p><h4>Adicionar um Novo Comunicado</h4></p>
-    <form method="POST" action="{{ action('ComunicadoController@store') }}">
+    <form method="POST" action="{{ action('ComunicadoController@store', $edital->id) }}">
     	{{ csrf_field() }}
 
 	    <div class="form-group">

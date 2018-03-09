@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CargoEdital;
+use App\Edital;
 
 class CargoController extends Controller
 {
@@ -13,7 +15,7 @@ class CargoController extends Controller
      */
     public function index()
     {
-        return view('edital.cargo.cargo');
+        
     }
 
     /**
@@ -21,9 +23,10 @@ class CargoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($edital_id)
     {
-        //
+        $edital = Edital::find($edital_id);
+        return view('edital.cargo.adicionar', compact('edital'));
     }
 
     /**
@@ -32,9 +35,21 @@ class CargoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $edital_id)
     {
-        //
+        $edital = Edital::find($edital_id);
+
+        $cargo = new CargoEdital;
+        $cargo->nome_cargo = $request->nome_cargo;
+        $cargo->curso = $request->curso;
+        $cargo->numero_vagas = $request->numero_vagas;
+        $cargo->turno_trabalho = $request->turno_trabalho;
+        $cargo->remuneracao = $request->remuneracao;
+        $cargo->tempo_experiencia = $request->tempo_experiencia;
+
+        $edital->cargo()->save($cargo);
+
+        return $this->index();
     }
 
     /**
@@ -44,8 +59,10 @@ class CargoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+
+        $edital = Edital::find($id);
+        return view('edital.cargo.cargo', compact('edital'));
     }
 
     /**

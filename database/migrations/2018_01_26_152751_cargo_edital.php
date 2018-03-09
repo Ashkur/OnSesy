@@ -15,11 +15,12 @@ class CargoEdital extends Migration
     {
         Schema::create('cargo_edital', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome_cargo');
             $table->string('curso');
             $table->string('turno_trabalho');
             $table->integer('tempo_experiencia');
             $table->integer('numero_vagas');
-            $table->float('remuneracao');
+            $table->string('remuneracao');
             $table->timestamps();
         });
     }

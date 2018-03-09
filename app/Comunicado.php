@@ -19,4 +19,8 @@ class Comunicado extends Model
     public function seletivo() {
         return $this->belongsTo('App\Seletivo', 'seletivo_id')->withTimestamps();
     }
+
+    public function edital() {
+        return $this->belongsTo('App\Edital', 'edital_id');
+    }
 }
