@@ -25,6 +25,6 @@ class Edital extends Model
     }
 
     public function comunicado(){
-        return $this->hasMany('App\Comunicado');
+        return $this->belongsToMany('App\Comunicado', 'edital_comunicados')->withTimestamps();
     }
 }

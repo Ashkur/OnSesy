@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comunicado;
 use App\Edital;
 use App\User;
 use Auth;
@@ -108,6 +109,23 @@ class EditalController extends Controller
         $edital = Edital::find($id);
         if(isset($edital))
             $edital->delete();
+
+        return $this->index();
+    }
+
+    public function addComunicado(Request $request, $edital_id){
+        
+        $edital = Edital::find($edital_id);
+        $user = User::find(Auth::id());
+
+        $comunicado = new Comunicado;
+        $comunicado->titulo = $request->titulo;
+        $comunicado->data_publicacao = $request->data_publicacao;
+        $comunicado->descricao = $request->descricao;
+
+        $user->comunicado()->save($comunicado);
+
+        $edital->comunicado()->attach(['id'=>$comunicado->id]);
 
         return $this->index();
     }

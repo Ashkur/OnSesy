@@ -12,7 +12,7 @@
         <table class="table text-center">
             <tr>
                 <th>Entidade/Orgão</th>
-                <th>Numéro</th>
+                <th>Número</th>
                 <th>Ano</th>
                 <th>Data de Início</th>
                 <th>Data Fim</th>
@@ -29,6 +29,7 @@
                     <td>{{$edital->ano}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_inicio)->format('d/m/Y')}}</td>
                     <td>{{\Carbon\Carbon::parse($edital->data_fim)->format('d/m/Y')}}</td>
+
                     @if($edital->cargo != "[]")
                         @foreach($edital->cargo as $cargo)
                         <td><a href="{{action('CargoController@show', $cargo->id)}}">Detalhes</a></td>
@@ -36,7 +37,15 @@
                     @else
                         <td><a href="{{action('CargoController@create', $edital->id)}}">Adicionar um Cargo</a></td>
                     @endif
-                    <td>Comunicado</td>
+
+                    @if($edital->comunicado != "[]")
+                        @foreach($edital->comunicado as $comunicado)
+                        <td> <a href="{{action('ComunicadoController@show', $edital->id)}}">Detalhes Comunicado</a></td>
+                        @endforeach
+                    @else
+                        <td><a href="{{action('ComunicadoController@create', $edital->id)}}">Adiconar Comunicado</a></td>
+                    @endif
+                    
                     <td><a href="{{action('EditalController@edit', $edital->id)}}">Editar</a></td>
                     <td>
                         <form action="{{action('EditalController@destroy', $edital->id)}}" method="post">

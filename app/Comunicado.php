@@ -20,7 +20,7 @@ class Comunicado extends Model
         return $this->belongsTo('App\Seletivo', 'seletivo_id')->withTimestamps();
     }
 
-    public function edital() {
-        return $this->belongsTo('App\Edital', 'edital_id');
+    public function edital(){
+        return $this->belongsToMany('App\Edital', 'edital_comunicados')->withTimestamps();
     }
 }

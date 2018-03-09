@@ -19,12 +19,6 @@ class RelacionamentoComunicadosUsers extends Migration
             $table->foreign('user_id')
             ->references('id')->on('users')
             ->deleteOn('cascade');
-
-            $table->integer('edital_id')->unsigned();
-            
-            $table->foreign('edital_id')
-            ->references('id')->on('edital')
-            ->deleteOn('cascade');
         });
     }
 

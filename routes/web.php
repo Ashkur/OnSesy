@@ -42,6 +42,10 @@ Route::prefix('edital')->group(function () {
     Route::put('{id}/editar', 'EditalController@update');
 
     Route::delete('{id}/excluir', 'EditalController@destroy');
+
+    Route::get('{id}/editar', 'EditalController@edit');
+
+    Route::post('{id}/comunicado/criar', 'EditalController@addComunicado');
 });
 
 //ROTAS COMUNICADO
@@ -52,6 +56,8 @@ Route::prefix('comunicado')->group(function () {
     Route::get('{id}/editar', 'ComunicadoController@edit');
     Route::put('{id}/editar', 'ComunicadoController@update');
     Route::delete('{id}/remover', 'ComunicadoController@destroy');
+
+    Route::get('{id}', 'ComunicadoController@show');
 
 });
 

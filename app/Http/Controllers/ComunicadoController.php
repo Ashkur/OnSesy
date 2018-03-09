@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 use App\Comunicado;
+use App\Edital;
 use App\User;
 
 class ComunicadoController extends Controller
@@ -60,7 +61,9 @@ class ComunicadoController extends Controller
      */
     public function show($id)
     {
-        //
+        $edital = Edital::find($id);
+
+        return view('comunicado.index', compact('edital'));
     }
 
     /**
