@@ -49,9 +49,25 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',            
+            'email' => 'required|string|email|max:255|unique:users',
+            'cpf' => 'required|string|min:14||unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|min:6|same:password'
+        ],[
+            'name.required' => 'Preencha o campo Nome!',
+            'name.string' => 'O nome não pode ser numérico!',
+            'name.max' => 'O nome não pode ser maior que 255 caracteres!',
+            'email.required' => 'Preencha o campo E-mail!',
+            'email.max' => 'O E-mail não pode ser maior que 255 caracteres!',
+            'email.unique' => 'E-mail inválido!',
+            'email.email' => 'E-mail inválido!',
+            'cpf.required' => 'Preencha o campo CPF!',
+            'cpf.unique' => 'CPF inválido!',
+            'password.required' => 'Preencha o campo Senha!',
+            'password.min' => 'A senha deve ter no mínimo 6 caracteres!',
+            'password.confirmed' => 'A senha não confere!',
+            'password_confirmation.required' => 'Preencha o campo Confirmar!',
+            'password_confirmation.confirmed' => 'A senha não confere!'
         ]);
     }
 

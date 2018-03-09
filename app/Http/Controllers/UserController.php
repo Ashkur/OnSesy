@@ -37,6 +37,28 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {   
+        $validator = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'cpf' => 'required|string|min:14||unique:users',                        
+            'password' => 'required|string|min:6|confirmed',
+            'password_confirmation' => 'required|min:6|same:password'
+        ],[
+            'name.required' => 'Preencha o campo Nome!',
+            'name.string' => 'O nome não pode ser numérico!',
+            'name.max' => 'O nome não pode ser maior que 255 caracteres!',
+            'email.required' => 'Preencha o campo E-mail!',
+            'email.max' => 'O E-mail não pode ser maior que 255 caracteres!',
+            'email.unique' => 'E-mail inválido!',
+            'cpf.required' => 'Preencha o campo CPF!',
+            'cpf.min' => 'O campo CPF de conter 11 digitos!',
+            'cpf.unique' => 'CPF inválido!',
+            'password.required' => 'Preencha o campo Senha!',
+            'password.min' => 'A senha deve ter no mínimo 6 caracteres!',
+            'password.confirmed' => 'A senha não confere!',
+            'password_confirmation.required' => 'Preencha o campo Confirmar!',
+            'password_confirmation.confirmed' => 'A senha não confere!'
+        ]);
 
         $user = new User;
         $user->name = $request->name;
@@ -80,6 +102,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $user = User::find($id);
         if($user == NULL)
             return $this->listar();
