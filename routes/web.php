@@ -22,6 +22,12 @@ Route::get('/a', function (){
      return redirect("/login");
 }
 });
+
+//ROTAS CARGO
+Route::prefix('cargo')->group(function () {
+    Route::get('lista', 'CargoController@index');
+});
+
 //ROTAS EDITAL
 Route::prefix('edital')->group(function () {
     Route::get('lista', 'EditalController@index');
