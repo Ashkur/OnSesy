@@ -40,6 +40,26 @@ class EditalController extends Controller
      */
     public function store(Request $request)
     {
+
+        $validator = $request->validate([
+            'entidade' => 'required|string|max:191',
+            'numero' => 'required|string|max:191',
+            'ano' => 'required|string|max:191',
+            'data_inicio' => 'required|string|max:191',
+            'data_fim' => 'required|string|max:191',
+        ],[
+            'entidade.required' => 'Preencha o campo Entidade/Orgão!',
+            'entidade.max' => 'O campo Entidade/Orgão não pode ser maior que 191 caracteres!',
+            'numero.required' => 'Preencha o campo Número!',
+            'numero.max' => 'O Número não pode ser maior que 191 caracteres!',
+            'ano.required' => 'Preencha o campo Ano!',
+            'ano.max' => 'O campo Ano não pode ser maior que 191 caracteres!',
+            'data_inicio.required' => 'Preencha o campo Data de Início!',
+            'data_inicio.max' => 'O Data de Início não pode ser maior que 191 caracteres!',
+            'data_fim.required' => 'Preencha o campo Data de Fim!',
+            'data_fim.max' => 'O Data de Fim não pode ser maior que 191 caracteres!',
+        ]);
+
         $user = User::find(Auth::id());
 
         $edital = new Edital;

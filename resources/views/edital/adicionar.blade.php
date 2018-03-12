@@ -10,6 +10,15 @@
     <div class="card-body">
     <form action="{{action('EditalController@store')}}" method="POST">
                 {{ csrf_field() }}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <div class="form-group">
                 <label for="entidade">Entidade/Orgão</label>
                 <input type="text" name="entidade" class="form-control" id="entidade" placeholder="Sesc/RR">

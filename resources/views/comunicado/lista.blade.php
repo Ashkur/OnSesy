@@ -2,10 +2,6 @@
 
 @section('content')
 <div class="container">
-    <p class="m-2">
-        <a href="{{action('ComunicadoController@create')}}" class="btn btn-success">Adicionar Comunicado</a>
-    </p>
-
     <div class="table-responsive">            
             <table class="table table-hover text-center">
                 <thead>
