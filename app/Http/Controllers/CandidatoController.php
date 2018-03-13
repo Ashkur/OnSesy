@@ -23,7 +23,7 @@ class CandidatoController extends Controller
      */
     public function create()
     {
-        //
+        return view('candidato.inscricao');
     }
 
     /**
