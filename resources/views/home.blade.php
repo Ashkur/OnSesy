@@ -25,28 +25,10 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>1</td>
-                                      <td>Processo de Recrutamento e Seleção Nº 008/2018 - Instrutor I - Fanfarra </td>
-                                      <td>Sesc/RR</td>
-                                      <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
-                                  </tr>
-                                  <tr>
-                                      <td>2</td>
-                                      <td>Processo de Recrutamento e Seleção Nº 007/2018 - Professor I - Música</td>
-                                      <td>Sesc/RR</td>
-                                      <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
-                                  </tr>
-                                  <tr>
-                                      <td>3</td>
-                                      <td>Processo de Recrutamento e Seleção Nº 006/2018 - Professor I - Inglês</td>
-                                      <td>Sesc/RR</td>
-                                      <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
-                                  </tr>
                                   @foreach($editais as $edital)
                                   <tr>
                                       <td>{{$edital->id}}</td>
-                                      <td>Processo de Recrutamento e Seleção Nº {{$edital->numero}}/{{$edital->ano}} - 
+                                      <td id="descricao{{$edital->id}}">Processo de Recrutamento e Seleção Nº {{$edital->numero}}/{{$edital->ano}} - 
                                         @foreach($edital->cargo as $cargo)
                                             {{$cargo->nome_cargo}}
                                         @endforeach
@@ -55,34 +37,10 @@
                                       <td>
                                         <div class="container">
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#{{$edital->id}}">
+                                            <button type="button" class="btn btn-success" onclick="cpfModal({{$edital->id}})">
                                             Inscrever-se
                                             </button>
-
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="{{$edital->id}}" tabindex="-1" role="dialog" aria-labelledby="label{{$edital->id}}" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="labe{{$edital->id}}">Inscrição Seletivo Nº {{$edital->numero}}/{{$edital->ano}}</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="input-group mb-2">
-                                                        <label for="cpf{{$edital->id}}">CPF: </label>&nbsp
-                                                        <input type="text" id="cpf{{$edital->id}}" name="cpf" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a href="" class="btn btn-primary">Edital</a>
+                                        <a href="#" class="btn btn-primary">Edital</a>
                                       </td>
                                             
                                   </tr>
@@ -94,6 +52,43 @@
                 </div>
             </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="modalcpf">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="">Inscrição Para o <span id="descricaoModal"></span> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="input-group mb-2">
+            <label for="cpf">CPF: </label>&nbsp
+            <input type="text" id="cpf" name="cpf" class="form-control">
+            <input type="text" id="" name="" value="" hidden>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+	$("#cpf").inputmask({
+		mask: ['999.999.999-99'],
+		keepStatic: true
+	});
+function cpfModal(n){
+$(document).ready(function(){
+    var str = "descricao"+n;
+    var a = $("#"+str).text();
+    $("#modalcpf").modal('show');
+    $("#descricaoModal").text(a);
 
-
+});
+}
+</script>
 @endsection

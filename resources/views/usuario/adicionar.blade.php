@@ -23,6 +23,11 @@
                                 </ul>
                             </div>
                         @endif
+                        <div class="alert alert-danger" hidden>
+                                <ul>
+                                    <li>CPF inválido!</li>
+                                </ul>
+                            </div>
                     <fieldset class="form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control validate" id="name" name="name" value="{{old('name')}}">
