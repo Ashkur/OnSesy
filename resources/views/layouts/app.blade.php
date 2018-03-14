@@ -8,14 +8,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <!-- Styles -->
-        
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link href="{{ asset('css/style2.css') }}" rel="stylesheet">
         <!-- Script Jquery e Mascaras-->
         <script src="{{ asset('js/funcoes.js') }}"></script>
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/add.js') }}"></script>
-        
     </head>
     <body>
       @if(Auth::guest())
@@ -31,6 +26,5 @@
       </section>
       <!-- Script -->
       <script src="{{ asset('js/app.js') }}"></script>
-      <script src="{{ asset('js/step.js') }}"></script>
     </body>
 </html>

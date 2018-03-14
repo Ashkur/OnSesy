@@ -22,10 +22,6 @@ Route::get('/a', function (){
      return redirect("/login");
 }
 });
-//ROTAS CANDIDATO
-Route::prefix('candidato')->group(function () {
-    Route::get('inscricao', 'CandidatoController@create');
-});
 
 //ROTAS CARGO
 Route::prefix('cargo')->group(function () {
