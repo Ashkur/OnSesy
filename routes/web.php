@@ -23,6 +23,12 @@ Route::get('/a', function (){
 }
 });
 
+//ROTAS CANDIDATO
+Route::prefix('candidato')->group(function () {
+    Route::get('inscricao', 'CandidatoController@create');
+    Route::post('inscricao', 'CandidatoController@store');
+});
+
 //ROTAS CARGO
 Route::prefix('cargo')->group(function () {
     Route::get('lista', 'CargoController@index');

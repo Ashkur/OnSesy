@@ -23,7 +23,8 @@ class CandidatoController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('candidato.inscricao');
     }
 
     /**
@@ -34,7 +35,7 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
@@ -80,5 +81,9 @@ class CandidatoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function validaInscricao(Request $request){
+        return $request;
     }
 }
