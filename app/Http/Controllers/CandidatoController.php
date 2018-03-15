@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Candidato;
 use App\User;
 
 class CandidatoController extends Controller
@@ -22,9 +23,12 @@ class CandidatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($cpf, $idEdital)
     {
-        return view('candidato.inscricao');
+        $ar = array();
+        $ar['cpf'] = $cpf;
+        $ar['edital'] = $idEdital;
+        return $ar;
     }
 
     /**
@@ -86,13 +90,25 @@ class CandidatoController extends Controller
     public function validaInscricao(){
         $input = request()->all();
         $cpf = $input['cpf'];
-        $res = "invalido";
+        $res = "invalido";        
         
         $user = new User;
         if($user->validCPF($cpf)){
-            
+            if($this->inscrito($cpf)){
+                //aplicar mais tarde
+            }else 
+                $res = "cadastrar";
         }
             
-        return response()->json(['success'=> 200]);
+        return response()->json($res);
+    }
+
+    public function inscrito($cpf){
+        $candidato = Candidato::where('cpf', $cpf)->first();
+        
+        if(isset($candidato));
+            return true;
+
+        return false;
     }
 }
