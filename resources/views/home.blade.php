@@ -67,7 +67,7 @@
         <div class="input-group mb-2">
             <label for="cpf">CPF: </label>&nbsp
             <input type="text" id="cpf" name="cpf" class="form-control">
-            <input type="text" id="idedital" name="idedital" class="form-control" velue="" hidden>
+            <input type="text" id="idedital" name="idEdital" class="form-control" value="" hidden>
         </div>
     </div>
     <div class="modal-footer">
@@ -83,26 +83,50 @@
 		mask: ['999.999.999-99'],
 		keepStatic: true
 	});
+
 function cpfModal(n){
 $(document).ready(function(){
+
     var str = "descricao"+n;
     var a = $("#"+str).text();
     $("#modalcpf").modal('show');
     $("#descricaoModal").text(a);
     $("#idedital").val(n);
-    $("#submitData").click(function (){
-        alert($("#idform").serialize());
-        $.ajax({			
-                type: "post",
-                url: "/candidato/validaCPF",
-                data: $("idform").serialize(); 
-                success: function (){
-                 }
-            });
-        return false;
-    });
 
 });
 }
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+}); 
+
+$("#submitData").click(function(e){
+
+    e.preventDefault();
+
+
+
+    var cpf = $("input[name=cpf]").val();
+
+    var idEdital = $("input[name=idEdital]").val();
+
+
+    $.ajax({
+
+    type:'POST',
+
+    url:'{{action('CandidatoController@validaInscricao')}}',
+
+    data:{cpf:cpf, idEdital:idEdital},
+
+    success:function(data){
+        window.location.href = "{{action('CandidatoController@create')}}";
+    }
+
+    });
+
+});
 </script>
 @endsection

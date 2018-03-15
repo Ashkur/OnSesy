@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class CandidatoController extends Controller
 {
@@ -23,7 +24,6 @@ class CandidatoController extends Controller
      */
     public function create()
     {
-
         return view('candidato.inscricao');
     }
 
@@ -83,7 +83,16 @@ class CandidatoController extends Controller
         //
     }
 
-    public function validaInscricao(Request $request){
-        return $request;
+    public function validaInscricao(){
+        $input = request()->all();
+        $cpf = $input['cpf'];
+        $res = "invalido";
+        
+        $user = new User;
+        if($user->validCPF($cpf)){
+            
+        }
+            
+        return response()->json(['success'=> 200]);
     }
 }
