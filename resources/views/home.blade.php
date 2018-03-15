@@ -5,12 +5,7 @@
                 <div class="panel-heading"><p>Dashboard</p></div>
 
                 <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
+                    
                     <section  id="seletvos">
                         <!-- Tabela -->
                         <div class="container h1">Seletivos Disponveis</div>
@@ -106,31 +101,33 @@ $("#submitData").click(function(e){
 
     e.preventDefault();
 
-
-
     var cpf = $("input[name=cpf]").val();
-
     var idEdital = $("input[name=idEdital]").val();
-
 
     $.ajax({
 
-    type:'POST',
+        type:'POST',
 
-    url:'{{action('CandidatoController@validaInscricao')}}',
+        url:'{{action('CandidatoController@validaInscricao')}}',
 
-    data:{cpf:cpf, idEdital:idEdital},
+        data:{cpf:cpf, idEdital:idEdital},
 
-    success:function(data){
-        alert(data);
-        switch (data) {
-            case "cadastrar":
-                window.location.href = "candidato/"+cpf+"/edital/"+idEdital+"/inscricao";
-                break;
-        
-            default:
-                break;
-        }
+        success:function(data){
+            switch (data) {
+                case "cadastrar":
+                    window.location.href = "candidato/"+cpf+"/edital/"+idEdital+"/inscricao";
+                    break;
+
+                //case: "cadastrado"
+                    //exibe comprovante
+                    //break;
+                case "invalido":
+                    alert("Este CPF é inválido!");
+                    break;
+                
+                default:
+                    break;
+            }
         
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Candidato;
+use App\Edital;
 use App\User;
 
 class CandidatoController extends Controller
@@ -25,10 +26,8 @@ class CandidatoController extends Controller
      */
     public function create($cpf, $idEdital)
     {
-        $ar = array();
-        $ar['cpf'] = $cpf;
-        $ar['edital'] = $idEdital;
-        return $ar;
+        $edital = Edital::find($idEdital);
+        return view('candidato.inscricao', compact('edital', 'cpf'));
     }
 
     /**
@@ -93,6 +92,7 @@ class CandidatoController extends Controller
         $res = "invalido";        
         
         $user = new User;
+
         if($user->validCPF($cpf)){
             if($this->inscrito($cpf)){
                 //aplicar mais tarde
@@ -106,7 +106,7 @@ class CandidatoController extends Controller
     public function inscrito($cpf){
         $candidato = Candidato::where('cpf', $cpf)->first();
         
-        if(isset($candidato));
+        if(isset($candidato))
             return true;
 
         return false;

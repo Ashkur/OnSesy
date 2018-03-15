@@ -12,7 +12,8 @@
 */
 Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    $editais = App\Edital::all();
+    return view('welcome', compact('editais'));
 });
 
 Route::get('/a', function (){

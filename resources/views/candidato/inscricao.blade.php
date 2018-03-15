@@ -4,7 +4,7 @@
 <div class="container">
         <form id="regForm" novalidate action="{{action('CandidatoController@store')}}" method="post">
          {{csrf_field()}}   
-        <h1>Inscrição:</h1>
+        <h1>Inscrição para o edital {{$edital->numero}}/{{$edital->ano}}</h1>
         <!-- One "tab" for each step in the form: -->
         <div class="tab"><h2>Passo 1</h2>:
             <div class="input-group mb-3">
@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" name="sobrenome" required placeholder="Sobrenome">
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF">
+            <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF" value="{{$cpf}}">
                 <input type="text" class="form-control" name="rg" id="rg" required placeholder="RG">
             </div>
             <div class="input-group mb-3">

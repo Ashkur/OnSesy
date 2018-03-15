@@ -29,24 +29,26 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($editais as $edital)
                         <tr>
-                            <td>1</td>
-                            <td id="descrição">Processo de Recrutamento e Seleção Nº 008/2018 - Instrutor I - Fanfarra </td>
-                            <td>Sesc/RR</td>
-                            <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
+                            <td>{{$edital->id}}</td>
+                            <td id="descricao{{$edital->id}}">Processo de Recrutamento e Seleção Nº {{$edital->numero}}/{{$edital->ano}} - 
+                              @foreach($edital->cargo as $cargo)
+                                  {{$cargo->nome_cargo}}
+                              @endforeach
+                            </td>
+                            <td>{{$edital->entidade}}</td>
+                            <td>
+                              <div class="container">
+                                  <!-- Button trigger modal -->
+                                  <button type="button" class="btn btn-success" onclick="cpfModal({{$edital->id}})">
+                                  Inscrever-se
+                                  </button>
+                              <a href="#" class="btn btn-primary">Edital</a>
+                            </td>
+                                  
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Processo de Recrutamento e Seleção Nº 007/2018 - Professor I - Música</td>
-                            <td>Sesc/RR</td>
-                            <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Processo de Recrutamento e Seleção Nº 006/2018 - Professor I - Inglês</td>
-                            <td>Sesc/RR</td>
-                            <td><a link="#" class="btn btn-warning ">Mais informações</a></td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -74,38 +76,91 @@
                 </div> <!-- /container -->
             </section>
           </div>
-          <!-- The Modal -->
-  <div class="modal fade" id="myModal">
-    <div class="modal-dialog">
+<!-- Modal -->
+<div class="modal fade" id="modalcpf">
+  <div class="modal-dialog" role="document">
       <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title"></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-        <fieldset class="form-group">
-                        <label for="cpf">CPF</label>
-                        <input type="text" class="form-control validate" id="cpf" name="cpf" value="">
-                    </fieldset>
-        </div>
-        
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">SAIR</button>
-        </div>
-        
+      <div class="modal-header">
+          <h5 class="modal-title" id="">Inscrição Para o <span id="descricaoModal"></span> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
       </div>
-    </div>
+      <form class="form" id="idform">
+      <div class="modal-body">
+          <div class="input-group mb-2">
+              <label for="cpf">CPF: </label>&nbsp
+              <input type="text" id="cpf" name="cpf" class="form-control">
+              <input type="text" id="idedital" name="idEdital" class="form-control" value="" hidden>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="submitData">Save changes</button>
+      </div>
+  </form>
+      </div>
   </div>
-</div>
+  </div>
 <script type="text/javascript">
 	$("#cpf").inputmask({
 		mask: ['999.999.999-99'],
 		keepStatic: true
 	});
+  function cpfModal(n){
+$(document).ready(function(){
+
+    var str = "descricao"+n;
+    var a = $("#"+str).text();
+    $("#modalcpf").modal('show');
+    $("#descricaoModal").text(a);
+    $("#idedital").val(n);
+
+});
+}
+
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+}); 
+
+$("#submitData").click(function(e){
+
+    e.preventDefault();
+
+    var cpf = $("input[name=cpf]").val();
+    var idEdital = $("input[name=idEdital]").val();
+
+    $.ajax({
+
+        type:'POST',
+
+        url:'{{action('CandidatoController@validaInscricao')}}',
+
+        data:{cpf:cpf, idEdital:idEdital},
+
+        success:function(data){
+            switch (data) {
+                case "cadastrar":
+                    window.location.href = "candidato/"+cpf+"/edital/"+idEdital+"/inscricao";
+                    break;
+
+                //case: "cadastrado"
+                    //exibe comprovante
+                    //break;
+                case "invalido":
+                    alert("Este CPF é inválido!");
+                    break;
+                
+                default:
+                    break;
+            }
+        
+    }
+
+    });
+
+});
 </script>
 @endsection
