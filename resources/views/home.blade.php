@@ -62,17 +62,19 @@
         <span aria-hidden="true">&times;</span>
         </button>
     </div>
+    <form class="form" id="idform">
     <div class="modal-body">
         <div class="input-group mb-2">
             <label for="cpf">CPF: </label>&nbsp
             <input type="text" id="cpf" name="cpf" class="form-control">
-            <input type="text" id="" name="" value="" hidden>
+            <input type="text" id="idedital" name="idedital" class="form-control" velue="" hidden>
         </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="submitData">Save changes</button>
     </div>
+</form>
     </div>
 </div>
 </div>
@@ -87,6 +89,18 @@ $(document).ready(function(){
     var a = $("#"+str).text();
     $("#modalcpf").modal('show');
     $("#descricaoModal").text(a);
+    $("#idedital").val(n);
+    $("#submitData").click(function (){
+        alert($("#idform").serialize());
+        $.ajax({			
+                type: "post",
+                url: "/candidato/validaCPF",
+                data: $("idform").serialize(); 
+                success: function (){
+                 }
+            });
+        return false;
+    });
 
 });
 }

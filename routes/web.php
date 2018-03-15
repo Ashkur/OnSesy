@@ -27,7 +27,9 @@ Route::get('/a', function (){
 Route::prefix('candidato')->group(function () {
     Route::get('inscricao', 'CandidatoController@create');
     Route::post('inscricao', 'CandidatoController@store');
+    Route::post('validarCPF', 'CandidatoController@validaInscricao');
 });
+
 
 //ROTAS CARGO
 Route::prefix('cargo')->group(function () {
