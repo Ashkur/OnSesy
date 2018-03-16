@@ -38,7 +38,38 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        return $request->experiencias;
+        $candidato = new Candidato;
+        $experienciaProfissional = new ExperienciaProfissional;
+        $endereco = new Endereco;
+
+        $candidato->nome = $request->nome;
+        $candidato->sobrenome = $request->sobrenome;
+        $candidato->cpf = $request->cpf;
+        $candidato->rg = $request->rg;
+        $candidato->email = $request->email;
+        $candidato->raca = $request->raca;
+        $candidato->estado_civil = $request->estado_civil;
+        $candidato->nacionalidade = $request->nacionalidade;
+        $candidato->sexo = $request->sexo;
+        $candidato->pne = $request->pne;
+        $candidato->atendimento_especial = $request->atendimento_especial;
+        $candidato->atendimento1 = $request->atendimento1;
+        $candidato->atendimento2 = $request->atendimento2;
+        //$candidato->save();
+
+        //endereco data
+        $endereco->logradouro = $request->logradouro;
+        $endereco->bairro = $request->bairro;
+        $endereco->cidade = $request->cidade;
+        $endereco->estado = $request->estado;
+        $endereco->cep = $request->cep;
+        //$endereco->save();
+
+        $experienciaProfissional->empresa = $request->empresa;
+        $experienciaProfissional->descricao = $request->descricao;
+        //$experienciaProfissional->save();
+
     }
 
     /**

@@ -16,13 +16,13 @@ class CreateExperienciaProfissionalTable extends Migration
         Schema::create('experiencia_profissional', function (Blueprint $table) {
             $table->increments('id');
             $table->string('empresa');
-            $table->string('cargo');
-            $table->string('funcao');
-            $table->integer('tempo');
-            $table->string('mes_ano_tempo');
+            //$table->string('cargo');
+            //$table->string('funcao');
+            //$table->integer('tempo');
+            //$table->string('mes_ano_tempo');
             $table->text('descricao');
-            $table->date('data_inicio');
-            $table->date('data_fim');
+            //$table->date('data_inicio');
+            //$table->date('data_fim');
             $table->timestamps();
         });
     }

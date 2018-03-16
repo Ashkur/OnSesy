@@ -13,14 +13,13 @@ class Candidato extends Model
         'rg',
         'nacionalidade',
         'sexo',
-        'genero',
         'filiacao1',
         'filiacao2',
         'pne',
         'atendimento_especial',
-        'lactante',
         'telefone1',
         'telefone2',
+        'raca',
         'email'
     ] ;
 

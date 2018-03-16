@@ -10,13 +10,13 @@ class ExperienciaProfissional extends Model
 
     protected $fillable = [
         'empresa',
-        'cargo',
-        'funcao',
-        'tempo',
-        'mes_ano_tempo',
+        //'cargo',
+        //'funcao',
+        //'tempo',
+        //'mes_ano_tempo',
         'descricao',
-        'data_inicio',
-        'data_fim',
+        //'data_inicio',
+        //'data_fim',
     ];
 
     public function candidato() {
