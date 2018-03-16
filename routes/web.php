@@ -12,8 +12,7 @@
 */
 Auth::routes();
 Route::get('/', function () {
-    $editais = App\Edital::all();
-    return view('welcome', compact('editais'));
+    return view('welcome');
 });
 
 Route::get('/a', function (){
@@ -26,8 +25,8 @@ Route::get('/a', function (){
 
 //ROTAS CANDIDATO
 Route::prefix('candidato')->group(function () {
-    Route::get('{cpf}/edital/{edital}/inscricao', 'CandidatoController@create');
-    Route::get('inscricao', 'CandidatoController@store');
+    Route::get('inscricao', 'CandidatoController@create');
+    Route::post('inscricao', 'CandidatoController@store');
     Route::post('validarCPF', 'CandidatoController@validaInscricao');
 });
 
