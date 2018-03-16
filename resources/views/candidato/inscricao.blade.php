@@ -6,7 +6,7 @@
          {{csrf_field()}}   
         <h1>Inscrição:</h1>
         <!-- One "tab" for each step in the form: -->
-        <div class="tab"><h2>Passo 1</h2>:
+        <div class="tab"><h2>Passo 1</h2>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="nome" id="nome" required placeholder="Primeiro Nome">
                 <input type="text" class="form-control" name="sobrenome" required placeholder="Sobrenome">
