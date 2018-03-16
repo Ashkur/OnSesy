@@ -122,7 +122,20 @@ $("#submitData").click(function(e){
     data:{cpf:cpf, idEdital:idEdital},
 
     success:function(data){
-        window.location.href = "{{action('CandidatoController@create')}}";
+        switch (data) {
+                case "cadastrar":
+                    window.location.href = "candidato/"+cpf+"/edital/"+idEdital+"/inscricao";
+                    break;
+                //case: "cadastrado"
+                    //exibe comprovante
+                    //break;
+                case "invalido":
+                    alert("Este CPF é inválido!");
+                    break;
+                
+                default:
+                    break;
+            }
     }
 
     });

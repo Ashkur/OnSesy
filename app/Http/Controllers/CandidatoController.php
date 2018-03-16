@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Candidato;
+use App\Edital;
 
 class CandidatoController extends Controller
 {
@@ -90,9 +92,19 @@ class CandidatoController extends Controller
         
         $user = new User;
         if($user->validCPF($cpf)){
-            
+            if($this->inscrito($cpf)){
+                //aplicar depois
+            } else $res = "cadastrar";
         }
             
-        return response()->json(['success'=> 200]);
+        return response()->json($res);
+    }
+
+    public function inscrito($cpf){
+        $candidato = Candidato::where('cpf', $cpf)->first();
+        if(isset($candidato))
+            return true;
+
+        return false;
     }
 }
