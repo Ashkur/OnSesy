@@ -40,7 +40,7 @@ class UserController extends Controller
         $validator = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|string|min:14||unique:users',                        
+            'cpf' => 'required|string|min:14|cpf|unique:users',                        
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|min:6|same:password'
         ],[
@@ -60,19 +60,13 @@ class UserController extends Controller
         ]);
 
         $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->cpf = $request->cpf;
+        $user->password = bcrypt($request->password);
+        $user->save(); 
 
-        if($user->validCPF($request->cpf)){
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->cpf = $request->cpf;
-            $user->password = bcrypt($request->password);
-            $user->save(); 
-        }else{
-            return back()->withInput();
-        }
-
-
-        return $this->listar();        
+        return $this->listar();
     }
 
     /**
