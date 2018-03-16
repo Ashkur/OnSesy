@@ -40,7 +40,7 @@ class UserController extends Controller
         $validator = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|string|min:14|cpf|unique:users',                        
+            'cpf' => 'required|string|min:14||unique:users',                        
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|min:6|same:password'
         ],[
@@ -53,7 +53,6 @@ class UserController extends Controller
             'cpf.required' => 'Preencha o campo CPF!',
             'cpf.min' => 'O campo CPF de conter 11 digitos!',
             'cpf.unique' => 'CPF inválido!',
-            'cpf.cpf' => 'CPF inválido!',
             'password.required' => 'Preencha o campo Senha!',
             'password.min' => 'A senha deve ter no mínimo 6 caracteres!',
             'password.confirmed' => 'A senha não confere!',

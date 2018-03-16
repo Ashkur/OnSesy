@@ -93,6 +93,6 @@ class CandidatoController extends Controller
             
         }
             
-        return response()->json(['success'=> $res]);
+        return response()->json(['success'=> 200]);
     }
 }
