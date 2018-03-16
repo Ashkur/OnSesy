@@ -24,9 +24,10 @@ class CandidatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($cpf, $editalId)
     {
-        return view('candidato.inscricao');
+        $edital = Edital::find($editalId);
+        return view('candidato.inscricao', compact('edital', 'cpf'));
     }
 
     /**

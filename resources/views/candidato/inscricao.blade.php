@@ -3,8 +3,14 @@
 @section('content')
 <div class="container">
         <form id="regForm" novalidate action="{{action('CandidatoController@store')}}" method="post">
-         {{csrf_field()}}   
-        <h1>Inscrição:</h1>
+         {{csrf_field()}}
+         @if(!isset($edital))
+         <script type="text/javascript">
+            window.location = "{{ route('home') }}";//here double curly bracket
+        </script>   
+        @else
+        <h1>Inscrição do Edital {{$edital->numero}}/{{$edital->ano}}</h1>
+        @endif
         <!-- One "tab" for each step in the form: -->
         <div class="tab"><h2>Passo 1</h2>:
             <div class="input-group mb-3">

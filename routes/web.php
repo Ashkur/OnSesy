@@ -22,11 +22,12 @@ Route::get('/a', function (){
      return redirect("/login");
 }
 });
+Route::get('/home', 'HomeController@index')->name('home');
 
 //ROTAS CANDIDATO
 Route::prefix('candidato')->group(function () {
-    Route::get('inscricao', 'CandidatoController@create');
-    Route::post('inscricao', 'CandidatoController@store');
+    Route::get('{id}/edital/{edital}/inscricao', 'CandidatoController@create');
+    Route::post('/inscricao', 'CandidatoController@store');
     Route::post('validarCPF', 'CandidatoController@validaInscricao');
 });
 
@@ -128,4 +129,3 @@ Route::group(['prefix' => 'usuario'], function () {
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
