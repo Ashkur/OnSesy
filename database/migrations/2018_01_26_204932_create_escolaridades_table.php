@@ -15,10 +15,16 @@ class CreateEscolaridadesTable extends Migration
     {
         Schema::create('escolaridades', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('candidato_id')->unsigned();
+            $table->string('nivel_escolar');
             $table->string('instituicao');
             $table->string('nome_curso');
             $table->integer('ano_conclusao');
             $table->timestamps();
+
+            $table->foreign('candidato_id')
+            ->references('id')->on('candidatos')
+            ->deleteOn('cascade');
         });
     }
 

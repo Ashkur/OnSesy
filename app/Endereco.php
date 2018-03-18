@@ -15,6 +15,6 @@ class Endereco extends Model
     ];
 
     public function candidato() {
-        return $this->hasOne('App\Candidato', 'candidato_id');
+        return $this->belongsTo('App\Candidato');
     }
 }

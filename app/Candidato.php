@@ -11,6 +11,7 @@ class Candidato extends Model
         'sobrenome',
         'cpf',
         'rg',
+        'naturalidade',
         'nacionalidade',
         'sexo',
         'filiacao1',
@@ -44,10 +45,14 @@ class Candidato extends Model
     }
 
     public function endereco() {
-        return $this->belongsTo('App\Endereco', 'endereco_id');
+        return $this->hasOne('App\Endereco');
     }
 
     public function escolaridade() {
-        return $this->belongsTo('App\Escolaridade', 'escolaridade_id');
+        return $this->hasOne('App\Escolaridade');
+    }
+
+    public function experiencias(){
+        return $this->hasOne('App\ExperienciaProfissional');
     }
 }

@@ -19,9 +19,7 @@
             </div>
             
             <div class="input-group mb-3">
-                <fieldset disabled="disabled">
-                    <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF" value="{{$cpf}}">
-                </fieldset>
+                <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF" value="{{$cpf}}">
                 <input type="text" class="form-control" name="rg" id="rg" required placeholder="RG">
             </div>
             <div class="input-group mb-3">
@@ -102,8 +100,12 @@
             <br>
             <div id="listas">
                 <div>
-                    <input placeholder="Descricão" class="inputclass" type="text" name="experiencias[0][descricao]" value="{{ isset($pessoa->experiencias->descricao) ? $pessoa->experiencias->descricao : '' }}">
                     <input placeholder="Empresa" class="inputclass" type="text" name="experiencias[0][empresa]" value="{{ isset($pessoa->experiencias->empresa) ? $pessoa->experiencias->empresa : '' }}">
+                    <input placeholder="Cargo" class="inputclass" type="text" name="experiencias[0][cargo]" value="{{ isset($pessoa->experiencias->cargo) ? $pessoa->experiencias->cargo : '' }}">
+                    <input placeholder="Função" class="inputclass" type="text" name="experiencias[0][funcao]" value="{{ isset($pessoa->experiencias->funcao) ? $pessoa->experiencias->funcao : '' }}">
+                    <input placeholder="Data de Inicio" class="inputclass" type="date" name="experiencias[0][data_inicio]" value="{{ isset($pessoa->experiencias->data_inicio) ? $pessoa->experiencias->data_inicio : '' }}">
+                    <input placeholder="Data Fim" class="inputclass" type="date" name="experiencias[0][data_fim]" value="{{ isset($pessoa->experiencias->data_fim) ? $pessoa->experiencias->data_fim : '' }}">
+                    <input placeholder="Descricão" class="inputclass" type="text" name="experiencias[0][descricao]" value="{{ isset($pessoa->experiencias->descricao) ? $pessoa->experiencias->descricao : '' }}">                    
                 </div>
             </div>
         </div>
@@ -120,6 +122,9 @@
             </div>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="cidade" id="cidade" required placeholder="Cidade">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="estado" id="estado" required placeholder="Estado">
             </div>
         </div>
 

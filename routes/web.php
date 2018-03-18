@@ -67,7 +67,6 @@ Route::prefix('comunicado')->group(function () {
     Route::delete('{id}/remover', 'ComunicadoController@destroy');
 
     Route::get('{id}', 'ComunicadoController@show');
-
 });
 
 

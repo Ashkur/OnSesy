@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Candidato;
 use App\Edital;
+use App\Endereco;
+use App\Escolaridade;
+use App\ExperienciaProfissional;
 
 class CandidatoController extends Controller
 {
@@ -38,10 +41,10 @@ class CandidatoController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->experiencias;
+
         $candidato = new Candidato;
-        $experienciaProfissional = new ExperienciaProfissional;
         $endereco = new Endereco;
+        $escolaridade = new Escolaridade;
 
         $candidato->nome = $request->nome;
         $candidato->sobrenome = $request->sobrenome;
@@ -50,25 +53,49 @@ class CandidatoController extends Controller
         $candidato->email = $request->email;
         $candidato->raca = $request->raca;
         $candidato->estado_civil = $request->estado_civil;
+        $candidato->naturalidade = $request->naturalidade;
         $candidato->nacionalidade = $request->nacionalidade;
-        $candidato->sexo = $request->sexo;
+        $candidato->filiacao1 = $request->filiacao1;
+        $candidato->filiacao2 = $request->filiacao2;
+        $candidato->telefone1 = $request->telefone1;
+        $candidato->telefone2 = $request->telefone2;
+
+        foreach($request->sexo as $sexo)
+            $candidato->sexo = $sexo;
+        
         $candidato->pne = $request->pne;
         $candidato->atendimento_especial = $request->atendimento_especial;
-        $candidato->atendimento1 = $request->atendimento1;
-        $candidato->atendimento2 = $request->atendimento2;
-        //$candidato->save();
+        $candidato->save();        
 
+        //experiencias
+        foreach($request->experiencias as $exp){
+            $experienciaProfissional = new ExperienciaProfissional;
+            $experienciaProfissional->empresa = $exp['empresa'];
+            $experienciaProfissional->cargo = $exp['cargo'];
+            $experienciaProfissional->funcao = $exp['funcao'];
+            $experienciaProfissional->data_inicio = $exp['data_inicio'];
+            $experienciaProfissional->data_fim = $exp['data_fim'];
+            $experienciaProfissional->descricao = $exp['descricao'];
+            $experienciaProfissional->tempo = $this->periodoDeExperiencia($exp['data_inicio'], $exp['data_fim']);
+            $candidato->experiencias()->save($experienciaProfissional);
+        }
+
+        //escolaridade
+        $escolaridade->instituicao = $request->instituicao;
+        $escolaridade->nivel_escolar = $request->nivel_escolar;
+        $escolaridade->nome_curso = $request->nome_curso;
+        $escolaridade->ano_conclusao = $request->ano_conclusao;
+        $candidato->escolaridade()->save($escolaridade);
+        
         //endereco data
         $endereco->logradouro = $request->logradouro;
         $endereco->bairro = $request->bairro;
         $endereco->cidade = $request->cidade;
         $endereco->estado = $request->estado;
         $endereco->cep = $request->cep;
-        //$endereco->save();
+        $candidato->endereco()->save($endereco);
 
-        $experienciaProfissional->empresa = $request->empresa;
-        $experienciaProfissional->descricao = $request->descricao;
-        //$experienciaProfissional->save();
+        return "ok";
 
     }
 
@@ -138,5 +165,16 @@ class CandidatoController extends Controller
             return true;
 
         return false;
+    }
+
+    public function periodoDeExperiencia($data1, $data2){
+
+        $dt_ini = new \DateTime($data1);
+        $dt_fim = new \DateTime($data2);
+    
+        $intervalo = $dt_ini->diff($dt_fim);
+
+        return $intervalo->y . " Ano(s), " . $intervalo->m." Mese(s), ".$intervalo->d." Dia(s) ";
+        
     }
 }

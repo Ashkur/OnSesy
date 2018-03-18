@@ -30,6 +30,8 @@ class CreateCandidatosTable extends Migration
             $table->string('telefone2');
             $table->string('raca');
             $table->string('email')->unique();
+            $table->string('estado_civil');
+            $table->timestamps();
         });
     }
 

@@ -10,16 +10,15 @@ class ExperienciaProfissional extends Model
 
     protected $fillable = [
         'empresa',
-        //'cargo',
-        //'funcao',
-        //'tempo',
-        //'mes_ano_tempo',
+        'cargo',
+        'funcao',
+        'tempo',
         'descricao',
-        //'data_inicio',
-        //'data_fim',
+        'data_inicio',
+        'data_fim',
     ];
 
     public function candidato() {
-        return $this->hasOne('App\Candidato', 'candidato_id');
+        return $this->belongsTo('App\Candidato');
     }
 }
