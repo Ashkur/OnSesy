@@ -55,4 +55,8 @@ class Candidato extends Model
     public function experiencias(){
         return $this->hasOne('App\ExperienciaProfissional');
     }
+
+    public function edital(){
+        return $this->belongsToMany('App\Edital', 'candidatos_edital')->withTimestamps();    
+    }
 }

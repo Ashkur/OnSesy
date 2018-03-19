@@ -126,9 +126,9 @@ $("#submitData").click(function(e){
                 case "cadastrar":
                     window.location.href = "candidato/"+cpf+"/edital/"+idEdital+"/inscricao";
                     break;
-                //case: "cadastrado"
-                    //exibe comprovante
-                    //break;
+                case "inscrito":
+                    window.location.href = "candidato/"+cpf+"/comprovante";
+                    break;
                 case "invalido":
                     alert("Este CPF é inválido!");
                     break;

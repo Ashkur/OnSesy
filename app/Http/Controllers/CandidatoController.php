@@ -147,24 +147,37 @@ class CandidatoController extends Controller
     public function validaInscricao(){
         $input = request()->all();
         $cpf = $input['cpf'];
+        $editalId = $input['idEdital'];
         $res = "invalido";
         
         $user = new User;
         if($user->validCPF($cpf)){
-            if($this->inscrito($cpf)){
-                //aplicar depois
+            if($this->cadastrado($cpf)){
+                if(!$this->inscrito($cpf, $editalId)){
+                    if($this->inscrever($cpf, $editalId)){
+                        $res = "inscrito";
+                    }
+                } $res = "inscrito";
             } else $res = "cadastrar";
         }
             
         return response()->json($res);
     }
 
-    public function inscrito($cpf){
+    public function cadastrado($cpf){
         $candidato = Candidato::where('cpf', $cpf)->first();
         if(isset($candidato))
             return true;
 
         return false;
+    }
+
+    public function inscrever($cpf, $editalId){
+        $candidato = Candidato::where('cpf', $cpf)->first();
+        $edital = Edital::find($editalId);
+
+        $candidato->edital()->attach($edital);
+        return true;
     }
 
     public function periodoDeExperiencia($data1, $data2){
@@ -174,7 +187,21 @@ class CandidatoController extends Controller
     
         $intervalo = $dt_ini->diff($dt_fim);
 
-        return $intervalo->y . " Ano(s), " . $intervalo->m." Mese(s), ".$intervalo->d." Dia(s) ";
+        return $intervalo->y . " Ano(s), " . $intervalo->m." Mese(s), ".$intervalo->d." Dia(s) ";        
+    }
+
+    public function gerarComprovante($cpf){
+        $candidato = Candidato::where('cpf', $cpf)->first();
+        return view('candidato.comprovante', compact('candidato'));
+    }
+
+    public function inscrito($cpf, $editalId){
+        $candidato = Candidato::where('cpf', $cpf)->first();
+        $edital = Edital::find($editalId);
         
+        if($candidato->edital->contains($edital))
+            return true;
+        
+        return false;
     }
 }

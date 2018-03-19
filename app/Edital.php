@@ -27,4 +27,8 @@ class Edital extends Model
     public function comunicado(){
         return $this->belongsToMany('App\Comunicado', 'edital_comunicados')->withTimestamps();
     }
+
+    public function candidato(){
+        return $this->belongsToMany('App\Candidato', 'candidatos_edital')->withTimestamps();
+    }
 }

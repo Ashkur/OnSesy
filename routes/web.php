@@ -27,6 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //ROTAS CANDIDATO
 Route::prefix('candidato')->group(function () {
     Route::get('{id}/edital/{edital}/inscricao', 'CandidatoController@create');
+    Route::get('{cpf}/comprovante', 'CandidatoController@gerarComprovante');
     Route::post('/inscricao', 'CandidatoController@store');
     Route::post('validarCPF', 'CandidatoController@validaInscricao');
 });
