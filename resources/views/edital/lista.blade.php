@@ -48,11 +48,11 @@
                     
                     <td><a href="{{action('EditalController@edit', $edital->id)}}">Editar</a></td>
                     <td>
-                        <form action="{{action('EditalController@destroy', $edital->id)}}" method="post">
+                        <form id="edital{{$edital->id}}" action="{{action('EditalController@destroy', $edital->id)}}" method="post">
 						    {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger">Excluir</button>
+                                <button type="button" class="btn btn-danger" onclick="editalDel({{$edital->id}})">Excluir</button>
                             </div>
                         </form>
                     </td>
@@ -61,4 +61,39 @@
         </table>
     </div>
 </div>
+<div class="modal fade" id="mi-modal">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="">Atenção</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+    <h5 class="modal-title" id="">Deseja realmente fazer isso?</h5>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="btnSim">Sim</button>
+        <button type="button" class="btn btn-danger" id="btnNao">Não</button>
+    </div>
+    </div>
+</div>
+</div>
+<script>
+function editalDel(n) {
+    var str = "edital";
+    $(document).ready(function(){
+        $("#mi-modal").modal('show');
+        
+        $("#btnSim").click(function(){
+            document.getElementById(str+n).submit();
+            });
+        
+        $("#btnNao").click(function(){
+            $("#mi-modal").modal('hide');
+            });
+        });
+}
+</script>
 @endsection
