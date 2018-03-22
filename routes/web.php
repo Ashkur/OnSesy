@@ -31,6 +31,12 @@ Route::get('/a', function (){
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('edital', 'EditalController');
+});
+
 //ROTAS CANDIDATO
 Route::prefix('candidato')->group(function () {
     Route::get('{id}/edital/{edital}/inscricao', 'CandidatoController@create');
@@ -41,16 +47,16 @@ Route::prefix('candidato')->group(function () {
 
 
 //ROTAS CARGO
-Route::prefix('cargo')->group(function () {
+Route::middleware('auth')->prefix('cargo')->group(function () {
     Route::get('lista', 'CargoController@index');
     Route::get('{id}/adicionar', 'CargoController@create');
     Route::post('{id}/adicionar', 'CargoController@store');
     Route::get('{id}', 'CargoController@show');
 });
-
+/*
 //ROTAS EDITAL
-Route::prefix('edital')->group(function () {
-    Route::get('lista', 'EditalController@index');
+Route::middleware('auth')->prefix('edital')->group(function () {
+    Route::get('/', 'EditalController@index');
 
     Route::get('criar', 'EditalController@create');
     Route::post('lista', 'EditalController@store');
@@ -64,7 +70,7 @@ Route::prefix('edital')->group(function () {
 
     Route::post('{id}/comunicado/criar', 'EditalController@addComunicado');
 });
-
+*/
 //ROTAS COMUNICADO
 Route::prefix('comunicado')->group(function () {
     Route::get('lista', 'ComunicadoController@index');
@@ -77,7 +83,7 @@ Route::prefix('comunicado')->group(function () {
     Route::get('{id}', 'ComunicadoController@show');
 });
 
-
+/*
 //ROTAS USER
 Route::prefix('user')->group(function () {
     Route::get('dashboard', 'UserController@index');
@@ -91,40 +97,7 @@ Route::prefix('user')->group(function () {
     Route::post('{id}/aplicar/papel}', 'UserController@aplicarPapel');
     Route::post('{id}/remover/papel}', 'UserController@removerPapel');
 });
-
-
-//ROTAS PARA EDICAO DAS PERMICÕES DOS PAPEIS
-Route::get('/permissao/adicionar', 'PermissaoController@create')->name('Adcionar Permissão');
-
-//ROTAS PARA TESTE DE PERMISSAO
-Route::get('/permissao/lista', 'PermissaoController@index')->name('lista');
-
-Route::get('/permissao/adicionar', 'PermissaoController@create');
-Route::post('/permissao/adicionar', 'PermissaoController@store');
-
-Route::get('/permissao/editar/{id}', 'PermissaoController@edit');
-Route::put('/permissao/editar/{id}', 'PermissaoController@update');
-
-Route::delete('/permissao/remover/{id}', 'PermissaoController@destroy');
-
-
-//ROTAS PARA TESTE DE PAPEIS
-Route::prefix('papel')->group(function () {
-    Route::get('lista', 'PapelController@index')->name('papel_lista');//->middleware('can:temAcesso');//teste com middleware
-
-    Route::get('adicionar', 'PapelController@create');
-    Route::post('adicionar', 'PapelController@store');
-
-    Route::get('editar/{id}', 'PapelController@edit');
-    Route::put('editar/{id}', 'PapelController@update');
-
-    Route::delete('remover/{id}', 'PapelController@destroy');
-
-    Route::put('permissao/adicionar/{id}', 'PapelController@adicionarPermissaoPapel');
-    Route::delete('permissoes/remover/{id}', 'PapelController@removerPermissaoPapel');
-
-    Route::get('permissoes/{id}', 'PapelController@visualizarPermissoesPapel');
-});
+*/
 
 //teste de cadastro do usuario
 Route::group(['prefix' => 'usuario'], function () {

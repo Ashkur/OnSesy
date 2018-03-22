@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Authorizable;
 use App\CargoEdital;
 use App\Edital;
 
 class CargoController extends Controller
 {
+    use Authorizable;
     /**
      * Display a listing of the resource.
      *
