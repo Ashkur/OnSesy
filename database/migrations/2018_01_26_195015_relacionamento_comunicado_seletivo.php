@@ -18,7 +18,7 @@ class RelacionamentoComunicadoSeletivo extends Migration
             
             $table->foreign('comunicado_id')
             ->references('id')->on('comunicados')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 

@@ -18,7 +18,7 @@ class RelacionamentoCandidatoSeletivosSeletivos extends Migration
             
             $table->foreign('seletivo_id')
             ->references('id')->on('seletivos')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 

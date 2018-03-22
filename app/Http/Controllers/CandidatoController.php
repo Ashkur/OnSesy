@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Candidato;
+use App\CargoEdital;
 use App\Edital;
 use App\Endereco;
 use App\Escolaridade;
@@ -95,7 +96,7 @@ class CandidatoController extends Controller
         $endereco->cep = $request->cep;
         $candidato->endereco()->save($endereco);
 
-        return "ok";
+        return $this->index();
 
     }
 
@@ -176,7 +177,13 @@ class CandidatoController extends Controller
         $candidato = Candidato::where('cpf', $cpf)->first();
         $edital = Edital::find($editalId);
 
-        $candidato->edital()->attach($edital);
+        foreach($edital->cargo as $cargo){
+            if($cargo->numero_vagas > 0){
+                $candidato->edital()->attach($edital);
+                $this->subtraiVagas($cargo->id);
+            } else return false;
+        }
+        
         return true;
     }
 
@@ -203,5 +210,11 @@ class CandidatoController extends Controller
             return true;
         
         return false;
+    }
+
+    public function subtraiVagas($idCargo){
+        $cargoVagas = CargoEdital::find($idCargo);
+        $cargoVagas->numero_vagas = --$cargoVagas->numero_vagas;
+        $cargoVagas->save();
     }
 }

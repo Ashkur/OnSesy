@@ -21,8 +21,8 @@
                <strong>Estado Civil:</strong> {{$candidato->estado_civil}}<br>
                <strong>filiacao 1:</strong> {{$candidato->filiacao1}}<br>
                <strong>filiacao 2:</strong> {{$candidato->filiacao2}}<br>
-               <strong>Possui Necessidades Físicas?:</strong> {{$candidato->pne}}<br>
-               <strong>Atendimento Especial?:</strong> {{$candidato->atendimento_especial}}<br>
+               <strong>Possui Necessidades Físicas?:</strong> @if($candidato->pne == 1) Sim @else Não @endif<br>
+               <strong>Atendimento Especial?:</strong> @if($candidato->atendimento_especial == 1) Sim @else Não @endif<br>
                <strong>Telefone:</strong> {{$candidato->telefone1}}<br>
                <strong>Telefone 2:</strong> {{$candidato->telefone2}}<br>
                <strong>E-mail:</strong> {{$candidato->email}}<br>

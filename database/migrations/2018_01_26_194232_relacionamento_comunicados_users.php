@@ -18,7 +18,7 @@ class RelacionamentoComunicadosUsers extends Migration
             
             $table->foreign('user_id')
             ->references('id')->on('users')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 
