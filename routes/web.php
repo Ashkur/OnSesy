@@ -11,6 +11,13 @@
 |
 */
 Auth::routes();
+Route::get('/z', function () {
+    $numero = 4;
+
+    $numero = --$numero;
+     return $numero;
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

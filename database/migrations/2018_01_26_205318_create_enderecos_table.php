@@ -25,7 +25,7 @@ class CreateEnderecosTable extends Migration
             
             $table->foreign('candidato_id')
             ->references('id')->on('candidatos')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 

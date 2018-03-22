@@ -20,11 +20,11 @@ class RelacionamentoPapeisPermissoes extends Migration
 
             $table->foreign('permissao_id')
                 ->references('id')->on('permissoes')
-                ->deleteOn('cascade');
+                ->onDelete('cascade');
 
             $table->foreign('papel_id')
                 ->references('id')->on('papeis')
-                ->deleteOn('cascade');
+                ->onDelete('cascade');
         });
     }
 

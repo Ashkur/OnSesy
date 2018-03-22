@@ -20,11 +20,11 @@ class CreateCandidatosEditalTable extends Migration
 
             $table->foreign('edital_id')
             ->references('id')->on('edital')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
 
             $table->foreign('candidato_id')
             ->references('id')->on('candidatos')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 

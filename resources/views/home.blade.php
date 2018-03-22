@@ -26,6 +26,8 @@
                               </thead>
                               <tbody>
                                   @foreach($editais as $edital)
+                                  @foreach($edital->cargo as $cargo)
+                                  @if($cargo->numero_vagas > 0)
                                   <tr>
                                       <td>{{$edital->id}}</td>
                                       <td id="descricao{{$edital->id}}">Processo de Recrutamento e Seleção Nº {{$edital->numero}}/{{$edital->ano}} - 
@@ -44,7 +46,9 @@
                                       </td>
                                             
                                   </tr>
-                                  @endforeach
+                                @endif
+                                @endforeach
+                                @endforeach
                               </tbody>
                           </table>
                       </div>

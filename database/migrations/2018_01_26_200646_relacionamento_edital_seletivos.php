@@ -18,7 +18,7 @@ class RelacionamentoEditalSeletivos extends Migration
             
             $table->foreign('edital_id')
             ->references('id')->on('edital')
-            ->deleteOn('cascade');
+            ->onDelete('cascade');
         });
     }
 

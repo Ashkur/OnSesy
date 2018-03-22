@@ -15,7 +15,9 @@ class CargoController extends Controller
      */
     public function index()
     {
-        
+        $editais = Edital::all();
+
+        return view('edital.lista', compact('editais'));
     }
 
     /**

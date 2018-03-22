@@ -22,11 +22,11 @@ class RelacionamentoPapeisUsers extends Migration
 
             $table->foreign('user_id')
                 ->references('id')->on('users')
-                ->deleteOn('cascade');
+                ->onDelete('cascade');
 
             $table->foreign('papel_id')
                 ->references('id')->on('papeis')
-                ->deleteOn('cascade');
+                ->onDelete('cascade');
         });
         
     }
