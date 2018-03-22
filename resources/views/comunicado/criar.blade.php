@@ -17,8 +17,10 @@
 	    </div>
 
 	    <div class="form-group">
-            <label>Comunicado</label>
-            <textarea class="form-control" rows="3" name="descricao" required></textarea>
+            <label>Arquivops</label>
+            <label>Arquivops</label>
+            <!-- <textarea class="form-control" rows="3" name="descricao" required></textarea> -->
+            <input type="file" class="form-control" name="data_publicacao" placeholder="Ex.: Auxiliar" required>
         </div>
                 
         <button type="submit" class="btn btn-success">Adicionar</button>

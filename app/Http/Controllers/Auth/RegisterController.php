@@ -50,7 +50,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'cpf' => 'required|string|min:14||unique:users',
+            'cpf' => 'required|string|min:14|cpf|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'password_confirmation' => 'required|min:6|same:password'
         ],[
@@ -63,11 +63,13 @@ class RegisterController extends Controller
             'email.email' => 'E-mail inválido!',
             'cpf.required' => 'Preencha o campo CPF!',
             'cpf.unique' => 'CPF inválido!',
+            'cpf.cpf' => 'CPF inválido!',
             'password.required' => 'Preencha o campo Senha!',
             'password.min' => 'A senha deve ter no mínimo 6 caracteres!',
             'password.confirmed' => 'A senha não confere!',
             'password_confirmation.required' => 'Preencha o campo Confirmar!',
-            'password_confirmation.confirmed' => 'A senha não confere!'
+            'password_confirmation.min' => 'A senha deve ter no mínimo 6 caracteres!',
+            'password_confirmation.same' => 'A senha não confere!'
         ]);
     }
 

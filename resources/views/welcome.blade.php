@@ -56,19 +56,19 @@
                 <!-- Example row of columns -->
                 <div class="row mt-5">
                     <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Empresa</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+                    <p><a class="btn btn-warning" href="#" role="button">Mais &raquo;</a></p>
                     </div>
                     <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Clientes</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+                    <p><a class="btn btn-warning" href="#" role="button">Mais &raquo;</a></p>
                     </div>
                     <div class="col-md-4">
-                    <h2>Heading</h2>
+                    <h2>Suporte</h2>
                     <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-warning" href="#" role="button" data-toggle="modal" data-target="#myModal">View details &raquo;</a></p>
+                    <p><a class="btn btn-warning" href="#" role="button" data-toggle="modal" data-target="#myModal">Mais &raquo;</a></p>
                     </div>
                 </div>
                 </div> <!-- /container -->
