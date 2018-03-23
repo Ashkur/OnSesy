@@ -24,8 +24,8 @@ class CreateCandidatosTable extends Migration
             $table->char('sexo', 1);
             $table->string('filiacao1');
             $table->string('filiacao2');
-            $table->boolean('pne');
-            $table->boolean('atendimento_especial');
+            $table->boolean('pne')->nullable();
+            $table->boolean('atendimento_especial')->nullable();
             $table->string('telefone1');
             $table->string('telefone2');
             $table->string('raca');
