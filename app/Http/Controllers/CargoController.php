@@ -64,7 +64,6 @@ class CargoController extends Controller
      */
     public function show($id)
     {   
-
         $edital = Edital::find($id);
         return view('edital.cargo.cargo', compact('edital'));
     }
@@ -101,5 +100,26 @@ class CargoController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function add($edital_id){
+        $edital = Edital::find($edital_id);
+        return view('edital.cargo.adicionar', compact('edital'));
+    }
+
+    public function salvarCargo(Request $request, $edital_id){
+        $edital = Edital::find($edital_id);
+
+        $cargo = new CargoEdital;
+        $cargo->nome_cargo = $request->nome_cargo;
+        $cargo->curso = $request->curso;
+        $cargo->numero_vagas = $request->numero_vagas;
+        $cargo->turno_trabalho = $request->turno_trabalho;
+        $cargo->remuneracao = $request->remuneracao;
+        $cargo->tempo_experiencia = $request->tempo_experiencia;
+
+        $edital->cargo()->save($cargo);
+
+        return redirect()->route('edital.index');
     }
 }

@@ -19,7 +19,8 @@ Route::get('/z', function () {
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    $editais = App\Edital::all();
+    return view('welcome', compact('editais'));
 });
 
 Route::get('/a', function (){
@@ -35,7 +36,14 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('edital', 'EditalController');
+    Route::resource('cargos', 'CargoController');
 });
+
+//ADD CARGO
+Route::get('{id}/cargos/add', 'CargoController@add');
+Route::post('{edital}/store', 'CargoController@salvarCargo');   
+//ADD Comunicado
+Route::post('{id}/comunicado/criar', 'EditalController@addComunicado');
 
 //ROTAS CANDIDATO
 Route::prefix('candidato')->group(function () {

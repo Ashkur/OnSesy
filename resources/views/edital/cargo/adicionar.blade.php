@@ -5,10 +5,10 @@
 
 <div class="card m-4">
     <div class="card-header">
-        <h3>Adicionar um cargo ao EDital {{$edital->id}}</h3>
+        <h3>Adicionar um cargo ao Edital {{$edital->id}}</h3>
     </div>
     <div class="card-body">
-    <form action="{{action('CargoController@store', $edital->id)}}" method="POST">
+    <form action="{{action('CargoController@salvarCargo', $edital->id)}}" method="POST">
                 {{ csrf_field() }}
             <div class="form-group">
                 <label for="nome_cargo">Nome</label>

@@ -56,6 +56,7 @@ class ComunicadoController extends Controller
             $file = Input::file('descricao');
             $extensao = $file->getClientOriginalExtension();
         }
+
         $user = User::find(Auth::id());
         $comunicado = new Comunicado;
         // $file = $request->file('descricao');
@@ -70,7 +71,7 @@ class ComunicadoController extends Controller
         $user->comunicado()->save($comunicado);
 
         
-        return $this->index();
+        return redirect()->route('edital.index');
     }
 
     /**

@@ -32,10 +32,10 @@
 
                     @if($edital->cargo != "[]")
                         @foreach($edital->cargo as $cargo)
-                        <td><a href="{{action('CargoController@show', $cargo->id)}}">Detalhes</a></td>
+                        <td><a href="{{route('cargos.show', $cargo->id)}}">Detalhes</a></td>
                         @endforeach
                     @else
-                        <td><a href="{{action('CargoController@create', $edital->id)}}">Adicionar um Cargo</a></td>
+                        <td><a href="{{action('CargoController@add', $edital->id)}}">Adicionar um Cargo</a></td>
                     @endif
 
                     @if($edital->comunicado != "[]")

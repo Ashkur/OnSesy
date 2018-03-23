@@ -133,7 +133,7 @@ class EditalController extends Controller
         if(isset($edital))
             $edital->delete();
 
-        return $this->index();
+        return redirect()->route('edital.index');
     }
 
     public function addComunicado(Request $request, $edital_id){

@@ -8,8 +8,9 @@
         <h3>Editar o Edital Nº {{$edital->numero}}{{$edital->ano}}</h3>
     </div>
     <div class="card-body">
-    <form action="{{action('EditalController@store')}}" method="POST">
+    <form action="{{action('EditalController@update', $edital->id)}}" method="POST">
                 {{ csrf_field() }}
+                {{method_field('PUT')}}
             <div class="form-group">
                 <label for="entidade">Entidade/Orgão</label>
                 <input type="text" name="entidade" class="form-control" id="entidade" placeholder="Sesc/RR" value="{{$edital->entidade}}">
