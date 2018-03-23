@@ -96,7 +96,7 @@ class CandidatoController extends Controller
         $endereco->cep = $request->cep;
         $candidato->endereco()->save($endereco);
 
-        return $this->index();
+        return redirect("candidato/{$candidato->cpf}/comprovante");
 
     }
 
