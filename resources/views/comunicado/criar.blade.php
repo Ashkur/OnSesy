@@ -5,6 +5,15 @@
     <p><h4>Adicionar um Novo Comunicado</h4></p>
     <form method="POST" action="{{ action('EditalController@addComunicado', $edital->id) }}">
     	{{ csrf_field() }}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
 	    <div class="form-group">
 	        <label for="exampleFormControlInput1">Titulo</label>
@@ -13,14 +22,14 @@
 
         <div class="form-group">
 	        <label for="exampleFormControlInput1">Data da Publicação</label>
-            <input type="date" class="form-control" name="data_publicacao" placeholder="Ex.: Auxiliar" required>
+            <input type="date" class="form-control" name="data_publicacao" required>
 	    </div>
 
 	    <div class="form-group">
-            <label>Arquivops</label>
-            <label>Arquivops</label>
+            <label>Arquivos</label>
+            <label>Arquivos</label>
             <!-- <textarea class="form-control" rows="3" name="descricao" required></textarea> -->
-            <input type="file" class="form-control" name="data_publicacao" placeholder="Ex.: Auxiliar" required>
+            <input type="file" class="form-control" name="descricao" required>
         </div>
                 
         <button type="submit" class="btn btn-success">Adicionar</button>

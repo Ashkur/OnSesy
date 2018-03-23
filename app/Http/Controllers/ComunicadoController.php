@@ -8,6 +8,8 @@ use Auth;
 use App\Comunicado;
 use App\Edital;
 use App\User;
+use File;
+use Illuminate\Support\Facades\Input;
 
 class ComunicadoController extends Controller
 {
@@ -41,14 +43,32 @@ class ComunicadoController extends Controller
      */
     public function store(Request $request)
     { 
-        $user = User::find(Auth::id());
+        $validator = $request->validate([
+            'descricao' => 'required|mimes:pdf|max:10000',
+            'titulo' => 'string'
+        ],[
+            'descricao.required' => 'Arquivo obrigatório!',
+            'descricao.mimes' => 'Formato de arquivo inválido!',
+            'titulo.string' => 'Titulo inválido!'
+        ]);
 
+        if(Input::file('descricao')){
+            $file = Input::file('descricao');
+            $extensao = $file->getClientOriginalExtension();
+        }
+        $user = User::find(Auth::id());
         $comunicado = new Comunicado;
+        // $file = $request->file('descricao');
+        // //$destinationPath = public_path(). '/storage/';
+        // $fileName = $request->file('descricao')->getClientOriginalName();
+        // //Input::file('descricao')->move($destinationPath, $fileName);
+        // $path = $request->file('decricao')->store('storage');
         $comunicado->titulo = $request->titulo;
         $comunicado->data_publicacao = $request->data_publicacao;
-        $comunicado->descricao = $request->descricao;
+        $comunicado->descricao = $file;
 
         $user->comunicado()->save($comunicado);
+
         
         return $this->index();
     }

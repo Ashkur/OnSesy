@@ -13,7 +13,7 @@
       <p class="card-text"><strong>Vagas:</strong> {{$cargo->numero_vagas}}</p>
       <p class="card-text"><strong>Turno:</strong> {{$cargo->turno_trabalho}}</p>
       <p class="card-text"><strong>Remuneração:</strong> {{$cargo->remuneracao}}</p>
-      <p class="card-text"><strong>Tempo de Experiência:</strong> {{$cargo->tempo_experiencia}} meses.</p>
+      <p class="card-text"><strong>Tempo de Experiência:</strong> {{$cargo->tempo_experiencia}} meses</p>
       <p class="card-text"><strong>Cidade:</strong> Boa Vista - Roraima</p>
     </div>
     @endforeach

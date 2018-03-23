@@ -16,23 +16,28 @@
             </div>
             <div class="form-group">
                 <label for="curso">Curso</label>
-                <input type="text" name="curso" class="form-control" id="curso" placeholder="008">
+                <input type="text" name="curso" class="form-control" id="curso" placeholder="">
             </div>
             <div class="form-group">
                 <label for="numero_vagas">Vagas</label>
-                <input type="text" name="numero_vagas" class="form-control" id="numero_vagas" placeholder="2018">
+                <input type="text" name="numero_vagas" class="form-control" id="numero_vagas" placeholder="">
             </div>
             <div class="form-group">
                 <label for="turno_trabalho">Turno</label>
-                <input type="text" name="turno_trabalho" class="form-control" id="turno_trabalho" placeholder="10/07/2018" >
+                <select class="form-control" name="turno_trabalho" id="turno_trabalho">
+                    <option>Matutino</option>
+                    <option>Vespertino</option>
+                    <option>Noturno</option>
+                    <option>Integral</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="remuneracao">Remuneração</label>
-                <input type="text" name="remuneracao" class="form-control" id="remuneracao" placeholder="10/07/2018">
+                <input type="text" name="remuneracao" class="form-control" id="remuneracao" placeholder="">
             </div>
             <div class="form-group">
                 <label for="tempo_experiencia">Experiencia</label>
-                <input type="text" name="tempo_experiencia" class="form-control" id="tempo_experiencia" placeholder="10/07/2018">
+                <input type="text" name="tempo_experiencia" class="form-control" id="tempo_experiencia" placeholder="">
             </div>
 
             <button class="btn btn-success float-right">Adicionar</button>
