@@ -16,7 +16,11 @@
         <script src="{{ asset('js/add.js') }}"></script>
     </head>
     <body>
+        @if (Auth::guest())                
+        @include('layouts._nave')
+        @else
         @include('layouts.navUser')
+        @endif
       <main>
         <div class="container">
             <div id="flash-msg">
