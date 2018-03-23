@@ -12,7 +12,7 @@
                 <h3 class="mb-0">ADICIONAR</h3>
             </div>
             <div class="card-body">
-                <form class="form" role="form" autocomplete="off" action="{{action('UserController@create')}}" method="POST">
+                <form class="form" role="form" autocomplete="off" action="{{action('UserController@store')}}" method="POST">
                     {{ csrf_field() }}
                     @if ($errors->any())
                             <div class="alert alert-danger">
@@ -52,12 +52,20 @@
                         <input type="password" class="form-control validate" id="confirmar" name="password_confirmation">
                     </fieldset>
 
+                    <!-- Roles Form Input -->
+                    <div class="form-group @if ($errors->has('roles')) has-error @endif">
+                        {!! Form::label('roles[]', 'Papéis') !!}{!! Form::select('roles[]', $roles, isset($user) ? $user->roles->pluck('id')->toArray() : null,  ['class' => 'form-control', 'multiple']) !!}
+                        
+                        @if ($errors->has('roles')) <p class="help-block">{{ $errors->first('roles') }}</p> @endif
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-success btn-lg float-right">Enviar</button>
                     </div>
                 </form>
             </div>
         </div>
+        
         <!-- /form card register -->
 
     </div>

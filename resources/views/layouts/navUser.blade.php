@@ -18,19 +18,11 @@
                     <a class="nav-link" href="{{action('EditalController@index')}}">Editais</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{action('UserController@index')}}">Seletivos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{action('ComunicadoController@index')}}">Comunicados</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{action('PapelController@index')}}">Papéis Administrativos</a>
+                    <a class="nav-link" href="{{action('RoleController@index')}}">Papéis Administrativos</a>
                 </li>
               </ul>
 
               @if (Auth::guest())
-                <a class="btn btn-warning ml-1" href="{{ route('login') }}"><b>Login</b></a>
-                <a class="btn btn-warning ml-1" href="{{ route('register') }}"><b>Cadastro</b></a>
               @else
 
             <ul class="nav navbar-nav navbar-right">

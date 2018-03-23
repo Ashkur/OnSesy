@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Authorizable;
 use App\Comunicado;
 use App\Edital;
 use App\User;
@@ -15,10 +16,12 @@ class EditalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    use Authorizable;
+    
     public function index()
     {
         $editais = Edital::all();
-
         return view('edital.lista', compact('editais'));
     }
 

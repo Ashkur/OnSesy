@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-use App\Permissao;
-
-class PermissaoController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class PermissaoController extends Controller
      */
     public function index()
     {
-        $permissoes = Permissao::all();
-
-        return view('permissoes.lista', compact('permissoes'));
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class PermissaoController extends Controller
      */
     public function create()
     {
-        return view('permissoes.permissao_adicionar');
+        //
     }
 
     /**
@@ -39,21 +35,16 @@ class PermissaoController extends Controller
      */
     public function store(Request $request)
     {
-        $permissao = new Permissao;
-        $permissao->nome = $request->nome;
-        $permissao->descricao = $request->descricao;
-        $permissao->save();
-
-        return $this->index();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
         //
     }
@@ -61,43 +52,34 @@ class PermissaoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        $permissao = Permissao::find($id);
-        return view('permissoes.editar', compact('permissao'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        $permissao = Permissao::find($id);
-
-        $permissao->nome = $request->nome;
-        $permissao->descricao = $request->descricao;
-        if($permissao->save())
-            return $this->index();
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        $permissao = Permissao::find($id);
-        $permissao->delete();
-
-        return $this->index();
+        //
     }
 }
