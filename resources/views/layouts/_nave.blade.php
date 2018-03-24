@@ -15,13 +15,18 @@
                     <a class="nav-link" href="#empresa">Empresa</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#seletivos">Seletivos</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="#depoimentos">Depoimentos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contato">Contato</a>
                 </li>
               </ul>
-              @if (Auth::guest())                
+              @if (Auth::guest())
+                <a class="btn btn-warning ml-1" href="{{ route('login') }}"><b>Login</b></a>
+                <a class="btn btn-warning ml-1" href="{{ route('register') }}"><b>Cadastro</b></a>
               @else
                 <li><a href="#">{{ Auth::user()->name }}</a></li></li>
                 <li>
