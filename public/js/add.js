@@ -8,7 +8,12 @@ $(document).ready(function() {
                         
                         $('#listas').append('<br><div>\
                                 <input type="text" placeholder="Descricão" class="inputclass" name="experiencias['+x+'][descricao]">\
-                                <input type="text" placeholder="Empresa" class="inputclass" name="experiencias['+x+'][empresa]">\
+                                <input placeholder="Empresa" class="inputclass" type="text" name="experiencias['+x+'][empresa]">\
+                                <input placeholder="Cargo" class="inputclass" type="text" name="experiencias['+x+'][cargo]">\
+                                <input placeholder="Função" class="inputclass" type="text" name="experiencias['+x+'][funcao]">\
+                                <input placeholder="Data de Inicio" class="inputclass" type="date" name="experiencias['+x+'][data_inicio]">\
+                                <input placeholder="Data Fim" class="inputclass" type="date" name="experiencias['+x+'][data_fim]">\
+                                <input placeholder="Descricão" class="inputclass" type="text" name="experiencias['+x+'][descricao]">\
                                 <a href="#" class="remover_campo">Remover</a>\
                                 </div>');
                         x++;
