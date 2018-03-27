@@ -44,7 +44,7 @@
                                 <div class="container">
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-success" onclick="cpfModal({{$edital->id}})">
-                                    Inscrever-se
+                                    Inscreva-se
                                     </button>
                                 <a href="#" class="btn btn-primary">Edital</a>
                               </td>
@@ -99,8 +99,8 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="submitData">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Sair</button>
+        <button type="submit" class="btn btn-primary" id="submitData">Inscreva-se</button>
     </div>
 </form>
     </div>

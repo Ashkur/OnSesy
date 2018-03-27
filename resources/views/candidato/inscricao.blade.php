@@ -19,7 +19,7 @@
             </div>
             
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF" value="{{$cpf}}">
+                <input type="text" class="form-control" name="cpf" id="cpf" required placeholder="CPF" value="{{$cpf}}" disabled>
                 <input type="text" class="form-control" name="rg" id="rg" required placeholder="RG">
             </div>
             <div class="input-group mb-3">
@@ -112,7 +112,7 @@
         <div class="tab"><h2>Passo 5</h2>
             <h3>Endereço:</h3>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="cep" id="cep" required placeholder="CEP">
+                <input type="text" class="form-control" name="cep" id="cep" required placeholder="CEP" size="10" maxlength="9" onblur="pesquisacep(this.value);">
             </div>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="logradouro" id="logradouro" required placeholder="Logradouro">
@@ -124,7 +124,7 @@
                 <input type="text" class="form-control" name="cidade" id="cidade" required placeholder="Cidade">
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" name="estado" id="estado" required placeholder="Estado">
+                <input type="text" class="form-control" name="estado" id="estado" required placeholder="UF">
             </div>
         </div>
 
@@ -169,4 +169,70 @@
         </div>
     </form>
 </div>
+<script type="text/javascript">
+function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('logradouro').value=("");
+            document.getElementById('bairro').value=("");
+            document.getElementById('cidade').value=("");
+            document.getElementById('estado').value=("");
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('logradouro').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+            document.getElementById('cidade').value=(conteudo.localidade);
+            document.getElementById('estado').value=(conteudo.uf);
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('logradouro').value="...";
+                document.getElementById('bairro').value="...";
+                document.getElementById('cidade').value="...";
+                document.getElementById('estado').value="...";
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+</script>
 @endsection
